@@ -108,16 +108,62 @@ ds <- ds %>%
     pb_citizenship = rowMeans(pick(any_of(c("pb01_01", "pb01_03"))), na.rm = TRUE), #citizenship average
     pb_belonging = rowMeans(pick(any_of(c("pb01_02", "pb01_04", "pb01_05"))), na.rm = TRUE), #senes of belonging
     
-    #coding binary migration vs no migration variable
+    #the following is the migration background coding
+    
     #if ci01/ci03/ci05 != 1 OR ci02/ci04/ci06 has any non-missing entry >>> migration background
-    migration_background = as.numeric(
-      ( !is.na(ci01) & ci01 != 1 ) | !is.na(ci02) |
-        ( !is.na(ci03) & ci03 != 1 ) | !is.na(ci04) |
-        ( !is.na(ci05) & ci05 != 1 ) | !is.na(ci06) 
-        #0 = no background, 1 = background    
-      )
+    self_born_abroad   = (!is.na(ci01) & ci01 != 1) | !is.na(ci02), #ci02 for other, non-list countries
+    mother_born_abroad = (!is.na(ci03) & ci03 != 1) | !is.na(ci04),
+    father_born_abroad = (!is.na(ci05) & ci05 != 1) | !is.na(ci06),
+    
+    #coding binary migration vs no migration variable 
+    migration_background = as.numeric(self_born_abroad | mother_born_abroad | father_born_abroad),
+    
+    #3-category migration generation variable
+    migration_generation = case_when(
+      self_born_abroad ~ "1st gen",
+      !self_born_abroad & (mother_born_abroad | father_born_abroad) ~ "2nd gen",
+      !self_born_abroad & !mother_born_abroad & !father_born_abroad ~ "Non-migrant",
+      TRUE ~ NA_character_
+    ),
+    
+    #making sure it's treated as a categorical variable in OLS
+    migration_generation = factor(migration_generation,
+                                  levels = c("Non-migrant", "2nd gen", "1st gen"))
+)
+
+    #recoding the personal experience questions
+pers_exp <- grep("^pe0[1-7]$", names(ds), value = TRUE) #just looking at matching column names
+
+ds <- ds %>%
+  mutate(across(all_of(pers_exp), ~ suppressWarnings(as.numeric(.)))) %>%
+  mutate(
+    #any experience: 1 if responses 2/3/4, else 0 if response 1
+    across(all_of(pers_exp),
+           ~ case_when(. == 1 ~ 0,
+                       . %in% 2:4 ~ 1,
+                       TRUE ~ NA_real_),
+           .names = "{.col}_exp_binary"),
+    #the degree of experience: 1=neg,2=mixed,3=pos; NA if no experience
+    across(all_of(pers_exp),
+           ~ case_when(. == 2 ~ 1,
+                       . == 3 ~ 2,
+                       . == 4 ~ 3,
+                       TRUE ~ NA_real_),
+           .names = "{.col}_exp_degree")
   )
 
+    #also having aggregate scores for personal experience just in case
+pers_exp_frequency <- grep("_exp_binary$", names(ds), value = TRUE)
+
+ds <- ds %>%
+  mutate(
+    #frequency of experience, aka number of institutions with any experience
+    exp_frequency = rowSums(pick(all_of(pers_exp_frequency)), na.rm = TRUE),
+    
+    #if experienced, mean valence across institutions; 1=neg,2=mixed,3=pos
+    exp_degree_mean = rowMeans(pick(ends_with("_exp_degree")), na.rm = TRUE),
+    
+  )
 
 #writing cleaned data
 write.csv(ds, "data_frost_cleaned.csv", row.names = FALSE)
