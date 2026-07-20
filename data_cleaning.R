@@ -1,17 +1,15 @@
 library(readxl)
+library(readr)
 library(janitor)
 library(dplyr)
-library(stringr)
-library(tidyr)
-library(psych)
-library(shiny)
+
 
 #to truncate values when they are being visualised
 options(digits = 3)
 
-ds_raw <- read_excel("data_frost2026_2026-07-17_14-31.xlsx", sheet = 1) %>% clean_names() #
+ds_raw <- read_excel("data_frost.xlsx", sheet = 1) %>% clean_names() #
 #glimpse(ds_raw)
-summary(ds_raw)
+#summary(ds_raw)
 
 #recoding -1, -9 as NAs
 nonresp_num <- c(-1, -9) # numeric missing codes to NA
@@ -28,6 +26,9 @@ recode_special_na <- function(x) {
 }
 
 ds <- ds_raw %>% mutate(across(everything(), recode_special_na))
+
+#also, removing completely empty rows
+ds <- ds %>% filter(!if_all(everything(), is.na))
 
 #numeric transition section
 ds <- ds %>%
@@ -161,12 +162,22 @@ ds <- ds %>%
     exp_frequency = rowSums(pick(all_of(pers_exp_frequency)), na.rm = TRUE),
     
     #if experienced, mean valence across institutions; 1=neg,2=mixed,3=pos
-    exp_degree_mean = rowMeans(pick(ends_with("_exp_degree")), na.rm = TRUE),
+    exp_degree_mean = rowMeans(pick(ends_with("_exp_degree")), na.rm = TRUE)
     
   )
 
+# Keep ALL columns; only fix types for analysis convenience
+ds <- ds %>%
+  mutate(
+    migration_background   = as.factor(migration_background),
+    german_citizen_binary  = as.factor(german_citizen_binary),
+    migration_generation   = factor(migration_generation,
+                                    levels = c("Non-migrant", "2nd gen", "1st gen"))
+  )
+
 #writing cleaned data
-write.csv(ds, "data_frost_cleaned.csv", row.names = FALSE)
+write_csv(ds, "data_frost_cleaned.csv")
 
 #taking a peek at the new data
-ds_cleaned <- read.csv("data_frost_cleaned.csv")
+ds_cleaned <- read_csv("data_frost_cleaned.csv")
+#glimpse(ds_cleaned)

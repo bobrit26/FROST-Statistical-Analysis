@@ -1,0 +1,47 @@
+term,estimate,std.error,statistic,p.value,conf.low,conf.high,model
+(Intercept),2.111,1.504,1.403701731293809,0.165,-0.891,5.112,M1: Cit×MigBG + controls
+german_citizen_binaryYes,3.916,1.456,2.6902440892226385,0.009,1.011,6.821,M1: Cit×MigBG + controls
+migration_backgroundYes,2.996,1.46,2.051883997354126,0.044,0.082,5.911,M1: Cit×MigBG + controls
+age,0.011,0.015,0.7233935768234372,0.472,-0.019,0.04,M1: Cit×MigBG + controls
+gender_binaryMale,0.314,0.359,0.874283860863738,0.385,-0.402,1.03,M1: Cit×MigBG + controls
+uni_binaryUni,-0.113,0.485,-0.23241816488507844,0.817,-1.081,0.855,M1: Cit×MigBG + controls
+german_citizen_binaryYes:migration_backgroundYes,-3.378,1.521,-2.220691850355006,0.03,-6.414,-0.342,M1: Cit×MigBG + controls
+(Intercept),1.833,1.195,1.5346156898914343,0.13,-0.559,4.226,M2: + Belonging (split)
+german_citizen_binaryYes,1.591,1.176,1.3522901339631856,0.182,-0.765,3.946,M2: + Belonging (split)
+migration_backgroundYes,0.945,1.155,0.8186580446921379,0.416,-1.367,3.258,M2: + Belonging (split)
+age,0.007,0.012,0.6304570226363166,0.531,-0.016,0.031,M2: + Belonging (split)
+gender_binaryMale,-0.066,0.29,-0.2259453924039801,0.822,-0.647,0.515,M2: + Belonging (split)
+uni_binaryUni,0.023,0.395,0.058072797039351046,0.954,-0.769,0.815,M2: + Belonging (split)
+pb_citizenship,-0.212,0.089,-2.38682840679032,0.02,-0.389,-0.034,M2: + Belonging (split)
+pb_belonging,0.592,0.085,6.926234054492687,0,0.421,0.763,M2: + Belonging (split)
+german_citizen_binaryYes:migration_backgroundYes,-1.449,1.197,-1.2101828054869226,0.231,-3.847,0.949,M2: + Belonging (split)
+(Intercept),2.969,1.451,2.046486649489354,0.045,0.069,5.869,M3: + Discrimination
+german_citizen_binaryYes,4.293,1.376,3.119770061117845,0.003,1.542,7.043,M3: + Discrimination
+migration_backgroundYes,3.262,1.379,2.3657116626550474,0.021,0.506,6.018,M3: + Discrimination
+age,0.015,0.014,1.0779584384985599,0.285,-0.013,0.044,M3: + Discrimination
+gender_binaryMale,0.085,0.347,0.24520007081448225,0.807,-0.609,0.779,M3: + Discrimination
+uni_binaryUni,-0.182,0.458,-0.3978017279342979,0.692,-1.099,0.734,M3: + Discrimination
+discrim_mean,-0.679,0.248,-2.7334463100992985,0.008,-1.176,-0.182,M3: + Discrimination
+german_citizen_binaryYes:migration_backgroundYes,-3.831,1.44,-2.6612903012591804,0.01,-6.709,-0.954,M3: + Discrimination
+(Intercept),2.291,1.226,1.8679316461546196,0.067,-0.166,4.748,M4: + Belonging (split) + Discrim
+german_citizen_binaryYes,1.897,1.185,1.6003503786222977,0.115,-0.477,4.271,M4: + Belonging (split) + Discrim
+migration_backgroundYes,1.158,1.154,1.0038289480389502,0.32,-1.153,3.47,M4: + Belonging (split) + Discrim
+age,0.009,0.012,0.7604565317022237,0.45,-0.014,0.032,M4: + Belonging (split) + Discrim
+gender_binaryMale,-0.101,0.289,-0.3498928548281029,0.728,-0.679,0.477,M4: + Belonging (split) + Discrim
+uni_binaryUni,-0.028,0.393,-0.07070274645697183,0.944,-0.816,0.76,M4: + Belonging (split) + Discrim
+pb_citizenship,-0.205,0.088,-2.3324239797379187,0.023,-0.382,-0.029,M4: + Belonging (split) + Discrim
+pb_belonging,0.557,0.088,6.332918519308747,0,0.381,0.734,M4: + Belonging (split) + Discrim
+discrim_mean,-0.304,0.213,-1.4289568780707291,0.159,-0.73,0.122,M4: + Belonging (split) + Discrim
+german_citizen_binaryYes:migration_backgroundYes,-1.702,1.2,-1.4186866067728348,0.162,-4.106,0.701,M4: + Belonging (split) + Discrim
+(Intercept),2.285,1.255,1.82038965999054,0.074,-0.232,4.801,M5: Cit×MigGen + mediators
+german_citizen_binaryYes,1.875,1.209,1.5512442645759907,0.127,-0.548,4.298,M5: Cit×MigGen + mediators
+migration_generation2nd gen,1.268,1.59,0.7974646691104398,0.429,-1.92,4.455,M5: Cit×MigGen + mediators
+migration_generation1st gen,1.138,1.181,0.9638173494349653,0.339,-1.229,3.506,M5: Cit×MigGen + mediators
+age,0.008,0.012,0.6974479712150117,0.489,-0.016,0.032,M5: Cit×MigGen + mediators
+gender_binaryMale,-0.099,0.295,-0.33667496969928395,0.738,-0.69,0.492,M5: Cit×MigGen + mediators
+uni_binaryUni,-0.033,0.401,-0.08126510088149741,0.936,-0.836,0.771,M5: Cit×MigGen + mediators
+pb_citizenship,-0.204,0.096,-2.132900731612513,0.037,-0.396,-0.012,M5: Cit×MigGen + mediators
+pb_belonging,0.56,0.092,6.079857267135767,0,0.375,0.745,M5: Cit×MigGen + mediators
+discrim_mean,-0.294,0.22,-1.3373117097924845,0.187,-0.735,0.147,M5: Cit×MigGen + mediators
+german_citizen_binaryYes:migration_generation2nd gen,-1.855,1.618,-1.1463587762003946,0.257,-5.099,1.389,M5: Cit×MigGen + mediators
+german_citizen_binaryYes:migration_generation1st gen,-1.585,1.295,-1.2240749935616408,0.226,-4.18,1.011,M5: Cit×MigGen + mediators
