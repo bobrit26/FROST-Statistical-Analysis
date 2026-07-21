@@ -291,6 +291,22 @@ p_bar_cit <- ds_cleaned %>%
 ggsave("Visuals/Figures/bar_citizenship.png", p_bar_cit,
        width = 5, height = 4, dpi = 300)
 
+# mystery graph
+p_grade <- ggplot(frost_grade, aes(x = stage, y = value, fill = stage)) +
+  geom_col() +
+  labs(
+    title = "FROST grade before vs after this graph",
+    x = NULL, y = "Grade"
+  ) +
+  scale_fill_manual(values = c("Before" = "grey70", "After" = "deeppink")) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = "none"
+  )
+
+ggsave("Visuals/Figures/FROST_grade_plot.png", p_fun, width = 5, height = 3.5, dpi = 30)
+
 # --- Scatterplots: trust vs discrimination / belonging (exclude NA in x and y)
 p_scatter_discr <- ds_cleaned %>%
   filter(!is.na(discrim_mean), !is.na(institution_mean)) %>%

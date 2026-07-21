@@ -1,26 +1,13 @@
-# ============================================================
-# 03_regressions_and_plots.R  (copy-paste)
-# Changes vs prior:
-#   - Split belonging into pb_citizenship and pb_belonging
-#   - Run 4 main models (MigBG) + 1 generation model (MigGen)
-#   - Export a combined regression table
-#   - Produce coefficient plots for EACH model (M1–M5)
-# ============================================================
-
 library(readr)
 library(dplyr)
 library(broom)
 library(ggplot2)
 library(modelsummary)
 
-# -----------------------------
-# Load cleaned data
-# -----------------------------
+
 ds <- read_csv("data_frost_cleaned.csv", show_col_types = FALSE)
 
-# -----------------------------
-# Type handling for clean interpretation
-# -----------------------------
+#numeric transformations
 ds <- ds %>%
   mutate(
     institution_mean = suppressWarnings(as.numeric(institution_mean)),
@@ -37,43 +24,37 @@ ds <- ds %>%
     uni_binary    = factor(uni_binary, levels = c(0, 1), labels = c("Non-uni", "Uni"))
   )
 
-# -----------------------------
-# Output folders
-# -----------------------------
+#output folders for the visuals
 dir.create("Visuals", showWarnings = FALSE)
 dir.create("Visuals/Tables", recursive = TRUE, showWarnings = FALSE)
 dir.create("Visuals/Figures", recursive = TRUE, showWarnings = FALSE)
 
-# ============================================================
-# Models (Migration background)
-# ============================================================
+#regression models
 
-# M1: baseline interaction + controls
+#model 1: baseline interaction + 3 basic controls
 m1 <- lm(institution_mean ~ german_citizen_binary * migration_background +
            age + gender_binary + uni_binary,
          data = ds)
 
-# M2: add belonging (split)
+#model 2: model 1 + 3 sense of belonging items
 m2 <- lm(institution_mean ~ german_citizen_binary * migration_background +
            age + gender_binary + uni_binary +
            pb_citizenship + pb_belonging,
          data = ds)
 
-# M3: add discrimination
+#model 3: model 1 + discrimination frequency
 m3 <- lm(institution_mean ~ german_citizen_binary * migration_background +
            age + gender_binary + uni_binary +
            discrim_mean,
          data = ds)
 
-# M4: add belonging (split) + discrimination
+#model 4: model 1 + 3 sense of belonging items + discrimination frequency
 m4 <- lm(institution_mean ~ german_citizen_binary * migration_background +
            age + gender_binary + uni_binary +
            pb_citizenship + pb_belonging + discrim_mean,
          data = ds)
 
-# ============================================================
-# Robustness / extension (Migration generation)
-# (uses generation categories instead of migration_background)
+#model 5: model 4 - migration background + migration generation (just to see if there is a difference)
 # ============================================================
 m5 <- lm(institution_mean ~ german_citizen_binary * migration_generation +
            age + gender_binary + uni_binary +
@@ -81,16 +62,14 @@ m5 <- lm(institution_mean ~ german_citizen_binary * migration_generation +
          data = ds)
 
 models <- list(
-  "M1: Cit×MigBG + controls"         = m1,
-  "M2: + Belonging (split)"          = m2,
-  "M3: + Discrimination"             = m3,
-  "M4: + Belonging (split) + Discrim"= m4,
-  "M5: Cit×MigGen + mediators"       = m5
+  "Model 1: Cit×MigBG + controls"         = m1,
+  "Model 2: + Belonging (split)"          = m2,
+  "Model 3: + Discrimination"             = m3,
+  "Model 4: + Belonging (split) + Discrim"= m4,
+  "Model 5: Cit×MigGen + mediators"       = m5
 )
 
-# -----------------------------
-# Export regression table (HTML)
-# -----------------------------
+#HTML regression export
 modelsummary::modelsummary(
   models,
   output = "Visuals/Tables/regression_models.html",
@@ -100,7 +79,7 @@ modelsummary::modelsummary(
   gof_omit = "AIC|BIC|Log\\.Lik|RMSE"
 )
 
-# Also export tidy coefficients for transparency
+#coefficient export
 tidy_all <- bind_rows(lapply(names(models), function(nm) {
   broom::tidy(models[[nm]], conf.int = TRUE) %>%
     mutate(model = nm)
@@ -115,12 +94,9 @@ tidy_all <- bind_rows(lapply(names(models), function(nm) {
 
 write_csv(tidy_all, "Visuals/Tables/regression_tidy_all.csv")
 
-# ============================================================
-# Coefficient plots (ONE per model)
-# Only plot substantively relevant terms to keep slides readable.
-# ============================================================
+#coefficient plot export
 
-# Terms to plot for MigBG models (M1–M4)
+#models 1 to 4
 terms_migbg <- c(
   "german_citizen_binaryYes",
   "migration_backgroundYes",
@@ -133,7 +109,7 @@ terms_migbg <- c(
   "uni_binaryUni"
 )
 
-# Terms to plot for MigGen model (M5)
+#model 5
 terms_miggen <- c(
   "german_citizen_binaryYes",
   "migration_generation2nd gen",
