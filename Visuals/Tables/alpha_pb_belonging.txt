@@ -1,0 +1,23 @@
+
+Reliability analysis   
+Call: psych::alpha(x = pb_belong_items)
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean  sd median_r
+      0.68      0.69    0.65      0.43 2.3 0.056  6.9 1.9     0.37
+
+    95% confidence boundaries 
+         lower alpha upper
+Feldt     0.55  0.68  0.77
+Duhachek  0.57  0.68  0.79
+
+ Reliability if an item is dropped:
+        raw_alpha std.alpha G6(smc) average_r  S/N alpha se var.r med.r
+pb01_02      0.40      0.42    0.26      0.26 0.71    0.117    NA  0.26
+pb01_04      0.77      0.79    0.66      0.66 3.80    0.045    NA  0.66
+pb01_05      0.53      0.54    0.37      0.37 1.17    0.093    NA  0.37
+
+ Item statistics 
+         n raw.r std.r r.cor r.drop mean  sd
+pb01_02 72  0.86  0.86  0.79   0.61  6.2 2.5
+pb01_04 72  0.71  0.69  0.40   0.34  6.5 2.4
+pb01_05 74  0.79  0.81  0.71   0.54  8.0 2.1

@@ -1,0 +1,61 @@
+Factor Analysis using method =  minres
+Call: fa(r = trust_items, nfactors = 2, rotate = "oblimin", fm = "minres")
+Standardized loadings (pattern matrix) based upon correlation matrix
+          MR1   MR2   h2   u2 com
+in01_01  0.62  0.28 0.55 0.45 1.4
+in01_02  0.62  0.30 0.57 0.43 1.5
+in02_01  0.64  0.30 0.59 0.41 1.4
+in02_02  0.62  0.34 0.59 0.41 1.5
+in03_01  0.59  0.02 0.36 0.64 1.0
+in03_02  0.62 -0.03 0.38 0.62 1.0
+in03_03  0.70  0.06 0.52 0.48 1.0
+in05_01  0.72  0.12 0.58 0.42 1.1
+in05_02  0.67  0.16 0.53 0.47 1.1
+in05_03  0.71  0.17 0.59 0.41 1.1
+in06_01  0.01  0.93 0.86 0.14 1.0
+in06_02 -0.01  0.89 0.78 0.22 1.0
+in06_03 -0.04  0.89 0.77 0.23 1.0
+in06_04  0.04  0.73 0.54 0.46 1.0
+in07_01  0.79 -0.05 0.61 0.39 1.0
+in07_02  0.87 -0.02 0.75 0.25 1.0
+in07_03  0.78 -0.13 0.57 0.43 1.1
+in07_05  0.92 -0.07 0.83 0.17 1.0
+in07_06  0.01 -0.50 0.25 0.75 1.0
+in08_01  0.82 -0.13 0.64 0.36 1.1
+in08_02  0.74 -0.16 0.52 0.48 1.1
+in08_04  0.74 -0.13 0.53 0.47 1.1
+in08_05  0.77 -0.17 0.56 0.44 1.1
+
+                       MR1  MR2
+SS loadings           9.60 3.87
+Proportion Var        0.42 0.17
+Cumulative Var        0.42 0.59
+Proportion Explained  0.71 0.29
+Cumulative Proportion 0.71 1.00
+
+ With factor correlations of 
+     MR1  MR2
+MR1 1.00 0.22
+MR2 0.22 1.00
+
+Mean item complexity =  1.1
+Test of the hypothesis that 2 factors are sufficient.
+
+df null model =  253  with the objective function =  90.1 with Chi Square =  8336
+df of  the model are 208  and the objective function was  75.1 
+
+The root mean square of the residuals (RMSR) is  0.14 
+The df corrected root mean square of the residuals is  0.16 
+
+The harmonic n.obs is  36 with the empirical chi square  182  with prob <  0.9 
+The total n.obs was  102  with Likelihood Chi Square =  6848  with prob <  0 
+
+Tucker Lewis Index of factoring reliability =  -0.014
+RMSEA index =  0.559  and the 90 % confidence intervals are  0.551 0.574
+BIC =  5886
+Fit based upon off diagonal values = 0.94
+Measures of factor score adequacy             
+                                                   MR1  MR2
+Correlation of (regression) scores with factors   0.98 0.97
+Multiple R square of scores with factors          0.96 0.93
+Minimum correlation of possible factor scores     0.92 0.87

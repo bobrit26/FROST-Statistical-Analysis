@@ -1,0 +1,35 @@
+Factor Analysis using method =  minres
+Call: fa(r = pb_items, nfactors = 1, rotate = "oblimin", fm = "minres")
+Standardized loadings (pattern matrix) based upon correlation matrix
+         MR1   h2   u2 com
+pb01_01 0.10 0.01 0.99   1
+pb01_02 0.80 0.64 0.36   1
+pb01_03 0.72 0.52 0.48   1
+pb01_04 0.49 0.24 0.76   1
+pb01_05 0.72 0.52 0.48   1
+
+                MR1
+SS loadings    1.92
+Proportion Var 0.38
+
+Mean item complexity =  1
+Test of the hypothesis that 1 factor is sufficient.
+
+df null model =  10  with the objective function =  1.29 with Chi Square =  127
+df of  the model are 5  and the objective function was  0.18 
+
+The root mean square of the residuals (RMSR) is  0.08 
+The df corrected root mean square of the residuals is  0.11 
+
+The harmonic n.obs is  67 with the empirical chi square  4.39  with prob <  0.49 
+The total n.obs was  102  with Likelihood Chi Square =  17.7  with prob <  0.0034 
+
+Tucker Lewis Index of factoring reliability =  0.781
+RMSEA index =  0.157  and the 90 % confidence intervals are  0.083 0.242
+BIC =  -5.44
+Fit based upon off diagonal values = 0.95
+Measures of factor score adequacy             
+                                                   MR1
+Correlation of (regression) scores with factors   0.90
+Multiple R square of scores with factors          0.81
+Minimum correlation of possible factor scores     0.62
