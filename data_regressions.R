@@ -93,7 +93,7 @@ m3 <- lm(
   data = ds
 )
 
-#model 4: model 1 + 3 sense of belonging items + 2 citizenship opinion items + discrimination frequency
+#model 4A: model 1 + 3 sense of belonging items + 2 citizenship opinion items + discrimination frequency
 m4A <- lm(
   institution_mean ~ german_citizen_binary *
     migration_background +
@@ -119,26 +119,13 @@ m4B <- lm(
   data = ds
 )
 
-#model 5: model 4 replace migration_background with migration_generation (alternative specification just to see if there is a difference)
-m5 <- lm(
-  institution_mean ~ german_citizen_binary *
-    migration_generation + #non-migrant vs 2nd gen vs 3rd gen
-    age +
-    gender_binary +
-    uni_binary +
-    pb_citizenship +
-    pb_belonging +
-    discrim_mean,
-  data = ds
-)
-
 models <- list(
   "Model 0: Cit + MigBG + controls" = m0,
   "Model 1: Cit×MigBG + controls" = m1,
   "Model 2: + Belonging (split)" = m2,
   "Model 3: + Discrimination" = m3,
-  "Model 4: + Belonging (split) + Discrim" = m4A,
-  "Model 4.1: Cit×MigGen + mediators" = m4B
+  "Model 4A: + Belonging (split) + Discrim" = m4A,
+  "Model 4B: Cit×MigGen + mediators" = m4B
 )
 
 #HTML regression export

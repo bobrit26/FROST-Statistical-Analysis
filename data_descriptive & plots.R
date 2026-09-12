@@ -536,8 +536,8 @@ ggsave(
 
 # 15. scale checks - Cronbach's alpha
 
-# Cronbach's alpha as a simple reliability check
-# do the items in a battery seem to hang together as one scale?
+# Cronbach's alpha as a simple reliability check to see if the items in a battery seem to hang together as one scale
+# is it better than EFA? I don't know, but I read that it's simpler and may just work better for our low-N pool
 # we use it here mainly for trust and personal belonging
 
 # trust items
@@ -607,28 +607,18 @@ capture.output(efa_pb_2, file = "Visuals/Tables/efa_pb_2factor.txt")
 
 # also EFA for trust items
 
-# first, a parallel analysis to get a rough idea of how many factors the trust items may have
-png("Visuals/Figures/efa_parallel_trust.png", width = 900, height = 700)
-fa.parallel(
-  trust_items,
-  fa = "fa",
-  fm = "minres",
-  main = "Parallel analysis: trust items"
-)
-dev.off()
-
-# one-factor solution - useful if we want to justify one overall trust measure
+# one-factor solution - probably useful if we want to justify one overall trust measure
 efa_trust_1 <- fa(trust_items, nfactors = 1, rotate = "oblimin", fm = "minres")
 capture.output(efa_trust_1, file = "Visuals/Tables/efa_trust_1factor.txt")
 
-# two-factor solution - useful as a comparison if the trust battery does not look clearly one-dimensional
+# two-factor solution - probably useful as a comparison if the trust battery does not look clearly one-dimensional
 efa_trust_2 <- fa(trust_items, nfactors = 2, rotate = "oblimin", fm = "minres")
 capture.output(efa_trust_2, file = "Visuals/Tables/efa_trust_2factor.txt")
 
 # 17. mystery graph - here be dragons
 
 frost_grade <- tibble(
-  stage = c("Before", "After"),
+  stage = c("After", "Before"),
   value = c("1,0", "5,0")
 )
 

@@ -1,47 +1,53 @@
 term,estimate,std.error,statistic,p.value,conf.low,conf.high,model
-(Intercept),2.111,1.504,1.403701731293809,0.165,-0.891,5.112,M1: Cit×MigBG + controls
-german_citizen_binaryYes,3.916,1.456,2.6902440892226385,0.009,1.011,6.821,M1: Cit×MigBG + controls
-migration_backgroundYes,2.996,1.46,2.051883997354126,0.044,0.082,5.911,M1: Cit×MigBG + controls
-age,0.011,0.015,0.7233935768234372,0.472,-0.019,0.04,M1: Cit×MigBG + controls
-gender_binaryMale,0.314,0.359,0.874283860863738,0.385,-0.402,1.03,M1: Cit×MigBG + controls
-uni_binaryUni,-0.113,0.485,-0.23241816488507844,0.817,-1.081,0.855,M1: Cit×MigBG + controls
-german_citizen_binaryYes:migration_backgroundYes,-3.378,1.521,-2.220691850355006,0.03,-6.414,-0.342,M1: Cit×MigBG + controls
-(Intercept),1.833,1.195,1.5346156898914343,0.13,-0.559,4.226,M2: + Belonging (split)
-german_citizen_binaryYes,1.591,1.176,1.3522901339631856,0.182,-0.765,3.946,M2: + Belonging (split)
-migration_backgroundYes,0.945,1.155,0.8186580446921379,0.416,-1.367,3.258,M2: + Belonging (split)
-age,0.007,0.012,0.6304570226363166,0.531,-0.016,0.031,M2: + Belonging (split)
-gender_binaryMale,-0.066,0.29,-0.2259453924039801,0.822,-0.647,0.515,M2: + Belonging (split)
-uni_binaryUni,0.023,0.395,0.058072797039351046,0.954,-0.769,0.815,M2: + Belonging (split)
-pb_citizenship,-0.212,0.089,-2.38682840679032,0.02,-0.389,-0.034,M2: + Belonging (split)
-pb_belonging,0.592,0.085,6.926234054492687,0,0.421,0.763,M2: + Belonging (split)
-german_citizen_binaryYes:migration_backgroundYes,-1.449,1.197,-1.2101828054869226,0.231,-3.847,0.949,M2: + Belonging (split)
-(Intercept),2.969,1.451,2.046486649489354,0.045,0.069,5.869,M3: + Discrimination
-german_citizen_binaryYes,4.293,1.376,3.119770061117845,0.003,1.542,7.043,M3: + Discrimination
-migration_backgroundYes,3.262,1.379,2.3657116626550474,0.021,0.506,6.018,M3: + Discrimination
-age,0.015,0.014,1.0779584384985599,0.285,-0.013,0.044,M3: + Discrimination
-gender_binaryMale,0.085,0.347,0.24520007081448225,0.807,-0.609,0.779,M3: + Discrimination
-uni_binaryUni,-0.182,0.458,-0.3978017279342979,0.692,-1.099,0.734,M3: + Discrimination
-discrim_mean,-0.679,0.248,-2.7334463100992985,0.008,-1.176,-0.182,M3: + Discrimination
-german_citizen_binaryYes:migration_backgroundYes,-3.831,1.44,-2.6612903012591804,0.01,-6.709,-0.954,M3: + Discrimination
-(Intercept),2.291,1.226,1.8679316461546196,0.067,-0.166,4.748,M4: + Belonging (split) + Discrim
-german_citizen_binaryYes,1.897,1.185,1.6003503786222977,0.115,-0.477,4.271,M4: + Belonging (split) + Discrim
-migration_backgroundYes,1.158,1.154,1.0038289480389502,0.32,-1.153,3.47,M4: + Belonging (split) + Discrim
-age,0.009,0.012,0.7604565317022237,0.45,-0.014,0.032,M4: + Belonging (split) + Discrim
-gender_binaryMale,-0.101,0.289,-0.3498928548281029,0.728,-0.679,0.477,M4: + Belonging (split) + Discrim
-uni_binaryUni,-0.028,0.393,-0.07070274645697183,0.944,-0.816,0.76,M4: + Belonging (split) + Discrim
-pb_citizenship,-0.205,0.088,-2.3324239797379187,0.023,-0.382,-0.029,M4: + Belonging (split) + Discrim
-pb_belonging,0.557,0.088,6.332918519308747,0,0.381,0.734,M4: + Belonging (split) + Discrim
-discrim_mean,-0.304,0.213,-1.4289568780707291,0.159,-0.73,0.122,M4: + Belonging (split) + Discrim
-german_citizen_binaryYes:migration_backgroundYes,-1.702,1.2,-1.4186866067728348,0.162,-4.106,0.701,M4: + Belonging (split) + Discrim
-(Intercept),2.285,1.255,1.82038965999054,0.074,-0.232,4.801,M5: Cit×MigGen + mediators
-german_citizen_binaryYes,1.875,1.209,1.5512442645759907,0.127,-0.548,4.298,M5: Cit×MigGen + mediators
-migration_generation2nd gen,1.268,1.59,0.7974646691104398,0.429,-1.92,4.455,M5: Cit×MigGen + mediators
-migration_generation1st gen,1.138,1.181,0.9638173494349653,0.339,-1.229,3.506,M5: Cit×MigGen + mediators
-age,0.008,0.012,0.6974479712150117,0.489,-0.016,0.032,M5: Cit×MigGen + mediators
-gender_binaryMale,-0.099,0.295,-0.33667496969928395,0.738,-0.69,0.492,M5: Cit×MigGen + mediators
-uni_binaryUni,-0.033,0.401,-0.08126510088149741,0.936,-0.836,0.771,M5: Cit×MigGen + mediators
-pb_citizenship,-0.204,0.096,-2.132900731612513,0.037,-0.396,-0.012,M5: Cit×MigGen + mediators
-pb_belonging,0.56,0.092,6.079857267135767,0,0.375,0.745,M5: Cit×MigGen + mediators
-discrim_mean,-0.294,0.22,-1.3373117097924845,0.187,-0.735,0.147,M5: Cit×MigGen + mediators
-german_citizen_binaryYes:migration_generation2nd gen,-1.855,1.618,-1.1463587762003946,0.257,-5.099,1.389,M5: Cit×MigGen + mediators
-german_citizen_binaryYes:migration_generation1st gen,-1.585,1.295,-1.2240749935616408,0.226,-4.18,1.011,M5: Cit×MigGen + mediators
+(Intercept),5.095,0.66,7.718560976448982,0,3.778,6.411,Model 0: Cit + MigBG + controls
+german_citizen_binaryYes,0.85,0.425,2.0008648175483676,0.049,0.003,1.698,Model 0: Cit + MigBG + controls
+migration_backgroundYes,-0.124,0.403,-0.3077150670308614,0.759,-0.929,0.68,Model 0: Cit + MigBG + controls
+age,0.01,0.014,0.702337514711275,0.485,-0.018,0.038,Model 0: Cit + MigBG + controls
+gender_binaryMale,0.421,0.352,1.196297696453367,0.236,-0.281,1.124,Model 0: Cit + MigBG + controls
+uni_binaryUni,-0.154,0.439,-0.3519821104241324,0.726,-1.029,0.72,Model 0: Cit + MigBG + controls
+(Intercept),2.106,1.479,1.4241074408111452,0.159,-0.844,5.056,Model 1: Cit×MigBG + controls
+german_citizen_binaryYes,3.932,1.434,2.7419472255361375,0.008,1.071,6.792,Model 1: Cit×MigBG + controls
+migration_backgroundYes,2.985,1.44,2.073023882999775,0.042,0.112,5.858,Model 1: Cit×MigBG + controls
+age,0.009,0.014,0.6335149242966017,0.528,-0.019,0.036,Model 1: Cit×MigBG + controls
+gender_binaryMale,0.345,0.344,1.001829908224965,0.32,-0.342,1.032,Model 1: Cit×MigBG + controls
+uni_binaryUni,-0.054,0.429,-0.12589545927411555,0.9,-0.91,0.802,Model 1: Cit×MigBG + controls
+german_citizen_binaryYes:migration_backgroundYes,-3.367,1.501,-2.2440727900956947,0.028,-6.361,-0.374,Model 1: Cit×MigBG + controls
+(Intercept),1.968,1.179,1.6684418033041886,0.101,-0.393,4.329,Model 2: + Belonging (split)
+german_citizen_binaryYes,1.606,1.173,1.3699950656072108,0.176,-0.741,3.953,Model 2: + Belonging (split)
+migration_backgroundYes,1.004,1.149,0.8739257957574029,0.386,-1.296,3.304,Model 2: + Belonging (split)
+age,0.008,0.012,0.7177744397404882,0.476,-0.015,0.031,Model 2: + Belonging (split)
+gender_binaryMale,-0.037,0.287,-0.1302490496243858,0.897,-0.612,0.538,Model 2: + Belonging (split)
+uni_binaryUni,-0.077,0.375,-0.2050811225335699,0.838,-0.827,0.673,Model 2: + Belonging (split)
+pb_citizenship,-0.222,0.087,-2.543188600455036,0.014,-0.398,-0.047,Model 2: + Belonging (split)
+pb_belonging,0.586,0.085,6.903514230698027,0,0.416,0.756,Model 2: + Belonging (split)
+german_citizen_binaryYes:migration_backgroundYes,-1.488,1.193,-1.2475209343551115,0.217,-3.876,0.9,Model 2: + Belonging (split)
+(Intercept),2.898,1.458,1.9882999075155905,0.051,-0.015,5.812,Model 3: + Discrimination
+german_citizen_binaryYes,4.136,1.378,3.0011180739610506,0.004,1.382,6.891,Model 3: + Discrimination
+migration_backgroundYes,3.26,1.386,2.351047703132832,0.022,0.489,6.03,Model 3: + Discrimination
+age,0.016,0.014,1.1103354555913527,0.271,-0.013,0.044,Model 3: + Discrimination
+gender_binaryMale,0.168,0.343,0.48893310834688225,0.627,-0.518,0.854,Model 3: + Discrimination
+uni_binaryUni,-0.328,0.447,-0.7331094512357534,0.466,-1.221,0.566,Model 3: + Discrimination
+discrim_mean,-0.528,0.221,-2.38945726486464,0.02,-0.969,-0.086,Model 3: + Discrimination
+german_citizen_binaryYes:migration_backgroundYes,-3.779,1.447,-2.6117391179992064,0.011,-6.671,-0.888,Model 3: + Discrimination
+(Intercept),2.301,1.236,1.8619984817919577,0.068,-0.174,4.775,Model 4A: + Belonging (split) + Discrim
+german_citizen_binaryYes,1.792,1.191,1.5039958883937774,0.138,-0.594,4.178,Model 4A: + Belonging (split) + Discrim
+migration_backgroundYes,1.157,1.163,0.9953142880340459,0.324,-1.171,3.485,Model 4A: + Belonging (split) + Discrim
+age,0.01,0.012,0.8249851178498812,0.413,-0.014,0.033,Model 4A: + Belonging (split) + Discrim
+gender_binaryMale,-0.044,0.288,-0.15279480868797318,0.879,-0.62,0.532,Model 4A: + Belonging (split) + Discrim
+uni_binaryUni,-0.156,0.385,-0.40530085973514235,0.687,-0.927,0.615,Model 4A: + Belonging (split) + Discrim
+pb_citizenship,-0.224,0.088,-2.557390771037516,0.013,-0.4,-0.049,Model 4A: + Belonging (split) + Discrim
+pb_belonging,0.563,0.089,6.359555772814424,0,0.386,0.74,Model 4A: + Belonging (split) + Discrim
+discrim_mean,-0.176,0.192,-0.9171603373365844,0.363,-0.562,0.209,Model 4A: + Belonging (split) + Discrim
+german_citizen_binaryYes:migration_backgroundYes,-1.654,1.208,-1.3693747746261231,0.176,-4.074,0.765,Model 4A: + Belonging (split) + Discrim
+(Intercept),2.287,1.264,1.8100930216234896,0.076,-0.245,4.819,Model 4B: Cit×MigGen + mediators
+german_citizen_binaryYes,1.766,1.214,1.454930179622333,0.151,-0.667,4.199,Model 4B: Cit×MigGen + mediators
+migration_generation2nd gen,1.25,1.6,0.7812039576454757,0.438,-1.957,4.458,Model 4B: Cit×MigGen + mediators
+migration_generation1st gen,1.136,1.189,0.955754299863895,0.343,-1.246,3.519,Model 4B: Cit×MigGen + mediators
+age,0.009,0.012,0.7507675554564397,0.456,-0.015,0.033,Model 4B: Cit×MigGen + mediators
+gender_binaryMale,-0.044,0.294,-0.14823338351696136,0.883,-0.632,0.545,Model 4B: Cit×MigGen + mediators
+uni_binaryUni,-0.161,0.392,-0.40990659251383893,0.683,-0.945,0.624,Model 4B: Cit×MigGen + mediators
+pb_citizenship,-0.221,0.096,-2.3122932132773366,0.025,-0.412,-0.029,Model 4B: Cit×MigGen + mediators
+pb_belonging,0.566,0.093,6.106119826769308,0,0.38,0.751,Model 4B: Cit×MigGen + mediators
+discrim_mean,-0.165,0.198,-0.8331053912621965,0.408,-0.563,0.232,Model 4B: Cit×MigGen + mediators
+german_citizen_binaryYes:migration_generation2nd gen,-1.806,1.629,-1.1090917385899175,0.272,-5.07,1.458,Model 4B: Cit×MigGen + mediators
+german_citizen_binaryYes:migration_generation1st gen,-1.506,1.302,-1.1569709771551748,0.252,-4.115,1.103,Model 4B: Cit×MigGen + mediators
