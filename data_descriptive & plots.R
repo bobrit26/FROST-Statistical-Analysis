@@ -425,14 +425,20 @@ save_html_table(
 
 corr_tidy_small <- make_corr_tidy(csmall)
 
-save_txt_output(
+write.table(
   corr_tidy_small,
-  "Descriptives/Text outputs/Correlations/corr_tidy_small.txt"
+  file = "Descriptives/Text outputs/Correlations/corr_selected_tidy_small.txt",
+  sep = "\t",
+  row.names = FALSE,
+  quote = FALSE
 )
 
-save_txt_output(
+write.table(
   r_tbl_small,
-  "Descriptives/Text outputs/Correlations/table2_corr_small.txt"
+  file = "Descriptives/Text outputs/Correlations/table2_corr_small.txt",
+  sep = "\t",
+  row.names = FALSE,
+  quote = FALSE
 )
 
 write_csv(
@@ -505,14 +511,20 @@ save_html_table(
 
 corr_tidy_big <- make_corr_tidy(cbig)
 
-save_txt_output(
+write.table(
   corr_tidy_big,
-  "Descriptives/Text outputs/Correlations/corr_tidy_big.txt"
+  file = "Descriptives/Text outputs/Correlations/corr_selected_tidy_big.txt",
+  sep = "\t",
+  row.names = FALSE,
+  quote = FALSE
 )
 
-save_txt_output(
+write.table(
   r_tbl_big,
-  "Descriptives/Text outputs/Correlations/table2_corr_big.txt"
+  file = "Descriptives/Text outputs/Correlations/table3_corr_big.txt",
+  sep = "\t",
+  row.names = FALSE,
+  quote = FALSE
 )
 
 write_csv(

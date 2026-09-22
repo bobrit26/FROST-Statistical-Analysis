@@ -1,0 +1,79 @@
+var1	var2	r	p	n	stars	r_with_sig
+Trust_broad	Trust_minimal	0.972	0	82	***	0.972***
+German_citizenship	Migration_background	-0.537	0	86	***	-0.537***
+German_citizenship	Migration_generation	-0.703	0	86	***	-0.703***
+German_citizenship	Personal_belonging_total	0.423	0	76	***	0.423***
+Migration_background	Migration_generation	0.925	0	102	***	0.925***
+Personal_belonging_total	Trust_broad	0.524	0	76	***	0.524***
+Personal_belonging_total	Trust_minimal	0.481	0	76	***	0.481***
+Belonging_citizenship	German_citizenship	0.445	0	74	***	0.445***
+Belonging_citizenship	Personal_belonging_total	0.793	0	74	***	0.793***
+Belonging_citizenship	Belonging_sense	0.459	0	73	***	0.459***
+Belonging_sense	Trust_broad	0.672	0	75	***	0.672***
+Belonging_sense	Trust_minimal	0.63	0	75	***	0.63***
+Belonging_sense	Personal_belonging_total	0.904	0	75	***	0.904***
+Belonging_citizenship	Migration_generation	-0.319	0.006	74	**	-0.319**
+Belonging_sense	German_citizenship	0.294	0.01	75	*	0.294*
+Age	Gender	0.257	0.02	82	*	0.257*
+Age	University_education	0.25	0.022	84	*	0.25*
+Age	Personal_experience_number	0.244	0.031	78	*	0.244*
+German_citizenship	Personal_experience_number	0.236	0.033	82	*	0.236*
+Discrimination_frequency	University_education	-0.245	0.033	76	*	-0.245*
+German_citizenship	Trust_broad	0.211	0.057	82	.	0.211.
+Migration_generation	Personal_belonging_total	-0.218	0.058	76	.	-0.218.
+Age	Migration_generation	0.192	0.078	85	.	0.192.
+German_citizenship	Trust_minimal	0.188	0.09	82	.	0.188.
+Age	Migration_background	0.162	0.139	85		0.162
+Age	Belonging_sense	0.176	0.141	71		0.176
+Migration_generation	Personal_experience_number	-0.159	0.153	82		-0.159
+Gender	Trust_minimal	0.162	0.156	78		0.162
+Gender	Trust_broad	0.152	0.184	78		0.152
+Migration_background	University_education	0.14	0.189	90		0.14
+Personal_experience_number	University_education	0.14	0.211	81		0.14
+Belonging_citizenship	Migration_background	-0.146	0.214	74		-0.146
+Belonging_citizenship	Personal_experience_number	0.144	0.22	74		0.144
+Age	Personal_belonging_total	0.145	0.223	72		0.145
+Personal_belonging_total	Personal_experience_number	0.141	0.224	76		0.141
+Migration_background	Trust_minimal	-0.125	0.265	82		-0.125
+Migration_background	Trust_broad	-0.122	0.274	82		-0.122
+Migration_generation	University_education	0.116	0.275	90		0.116
+Belonging_citizenship	Trust_broad	0.129	0.275	74		0.129
+Belonging_sense	Discrimination_frequency	-0.122	0.297	75		-0.122
+Migration_background	Personal_belonging_total	-0.121	0.298	76		-0.121
+Age	German_citizenship	-0.113	0.314	81		-0.113
+Trust_broad	University_education	-0.11	0.329	81		-0.11
+Migration_background	Personal_experience_number	-0.109	0.33	82		-0.109
+Belonging_sense	Gender	0.114	0.345	71		0.114
+Age	Trust_minimal	0.107	0.35	78		0.107
+Age	Trust_broad	0.107	0.351	78		0.107
+Discrimination_frequency	Personal_belonging_total	-0.105	0.368	76		-0.105
+Trust_minimal	University_education	-0.099	0.379	81		-0.099
+Personal_experience_number	Trust_minimal	0.097	0.385	82		0.097
+Age	Belonging_citizenship	0.103	0.396	70		0.103
+Belonging_citizenship	Trust_minimal	0.098	0.408	74		0.098
+Discrimination_frequency	Trust_broad	-0.095	0.41	77		-0.095
+Migration_generation	Trust_broad	-0.088	0.433	82		-0.088
+Migration_generation	Trust_minimal	-0.084	0.456	82		-0.084
+Personal_experience_number	Trust_broad	0.078	0.487	82		0.078
+Belonging_sense	Personal_experience_number	0.08	0.493	75		0.08
+Belonging_sense	Migration_generation	-0.077	0.513	75		-0.077
+Discrimination_frequency	Gender	-0.076	0.522	73		-0.076
+Belonging_citizenship	Discrimination_frequency	-0.064	0.587	74		-0.064
+Belonging_citizenship	Gender	-0.063	0.604	70		-0.063
+German_citizenship	University_education	-0.05	0.652	85		-0.05
+Belonging_sense	University_education	-0.053	0.656	74		-0.053
+Gender	German_citizenship	0.049	0.663	82		0.049
+Discrimination_frequency	Trust_minimal	-0.049	0.67	77		-0.049
+Belonging_sense	Migration_background	-0.049	0.675	75		-0.049
+Gender	Personal_experience_number	0.038	0.743	78		0.038
+Gender	Personal_belonging_total	0.037	0.759	72		0.037
+Gender	University_education	0.031	0.774	86		0.031
+Gender	Migration_generation	0.029	0.794	86		0.029
+Personal_belonging_total	University_education	-0.024	0.836	75		-0.024
+Belonging_citizenship	University_education	0.019	0.871	73		0.019
+Discrimination_frequency	German_citizenship	-0.017	0.884	77		-0.017
+Age	Discrimination_frequency	-0.015	0.901	73		-0.015
+Discrimination_frequency	Personal_experience_number	0.005	0.963	77		0.005
+Discrimination_frequency	Migration_generation	-0.005	0.965	77		-0.005
+Discrimination_frequency	Migration_background	0.005	0.969	77		0.005
+Gender	Migration_background	-0.002	0.988	86		-0.002
