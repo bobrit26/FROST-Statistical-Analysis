@@ -4,10 +4,12 @@ library(broom)
 library(ggplot2)
 library(modelsummary)
 
+# 1. read the cleaned data
 
 ds <- read_csv("data_frost_cleaned.csv", show_col_types = FALSE)
 
-#numeric transformations
+# 2. numeric transformations
+
 ds <- ds %>%
   mutate(
     institution_mean = suppressWarnings(as.numeric(institution_mean)),
@@ -43,12 +45,13 @@ ds <- ds %>%
     )
   )
 
-#output folders for the visuals
-dir.create("Visuals", showWarnings = FALSE)
-dir.create("Visuals/Tables", recursive = TRUE, showWarnings = FALSE)
-dir.create("Visuals/Figures", recursive = TRUE, showWarnings = FALSE)
+# 3. output folders for the visuals
 
-#regression models
+dir.create("Regressions", showWarnings = FALSE)
+dir.create("Regressions/Tables", recursive = TRUE, showWarnings = FALSE)
+dir.create("Regressions/Figures", recursive = TRUE, showWarnings = FALSE)
+
+# 4. regression models
 
 #model 0: minimal baseline model + 3 basic controls (it's 0 because it's below our core theory level)
 m0 <- lm(
@@ -60,10 +63,34 @@ m0 <- lm(
   data = ds
 )
 
-#model 1: baseline interaction model + 3 basic controls
+#model 1A: baseline interaction model + 3 basic controls
 m1 <- lm(
   institution_mean ~ german_citizen_binary *
     migration_background +
+    age + #controls
+    gender_binary +
+    uni_binary,
+  data = ds
+)
+
+# model 1 with alternative trust: model 1 + institution_mean_minimal - institution_mean
+# aka our first robustness check model
+
+m1_alt_trust <- lm(
+  institution_mean_minimal ~ german_citizen_binary *
+    migration_background +
+    age + #controls
+    gender_binary +
+    uni_binary,
+  data = ds
+)
+
+# model 1 with alternative migration: model 1 + migration_generation - migration_background
+# aka our first robustness check model
+
+m1_alt_migration <- lm(
+  institution_mean ~ german_citizen_binary *
+    migration_generation + #non-migrant vs 2nd gen vs 3rd gen
     age + #controls
     gender_binary +
     uni_binary,
@@ -93,8 +120,8 @@ m3 <- lm(
   data = ds
 )
 
-#model 4A: model 1 + 3 sense of belonging items + 2 citizenship opinion items + discrimination frequency
-m4A <- lm(
+#model 4: model 1 + 3 sense of belonging items + 2 citizenship opinion items + discrimination frequency
+m4 <- lm(
   institution_mean ~ german_citizen_binary *
     migration_background +
     age +
@@ -106,8 +133,21 @@ m4A <- lm(
   data = ds
 )
 
-#model 4B: model 4A replace migration_background with migration_generation (alternative specification just to see if there is a difference)
-m4B <- lm(
+#model 4 alternative trust: model 4 + institution_mean_minimal - institution_mean
+m4_alt_trust <- lm(
+  institution_mean_minimal ~ german_citizen_binary *
+    migration_background +
+    age +
+    gender_binary +
+    uni_binary +
+    pb_citizenship +
+    pb_belonging +
+    discrim_mean,
+  data = ds
+)
+
+#model 4 alternative migration: model 4 + migration_generation - migration_background
+m4_alt_migration <- lm(
   institution_mean ~ german_citizen_binary *
     migration_generation + #non-migrant vs 2nd gen vs 3rd gen
     age +
@@ -118,27 +158,29 @@ m4B <- lm(
     discrim_mean,
   data = ds
 )
-
 models <- list(
   "Model 0: Cit + MigBG + controls" = m0,
   "Model 1: Cit×MigBG + controls" = m1,
+  "Model 1: Alternative trust - minimal trust scale" = m1_alt_trust,
+  "Model 1: Alternative migration - migration generation" = m1_alt_migration,
   "Model 2: + Belonging (split)" = m2,
   "Model 3: + Discrimination" = m3,
-  "Model 4A: + Belonging (split) + Discrim" = m4A,
-  "Model 4B: Cit×MigGen + mediators" = m4B
+  "Model 4: + Belonging (split) + Discrim" = m4,
+  "Model 4: Alternative trust - minimal trust scale" = m4_alt_trust,
+  "Model 4: Alternative migration - migration generation" = m4_alt_migration
 )
 
-#HTML regression export
+# 5. HTML regression export
 modelsummary::modelsummary(
   models,
-  output = "Visuals/Tables/regression_models.html",
+  output = "Regressions/Tables/regression_models.html",
   stars = TRUE,
   statistic = "({std.error})",
   fmt = 3,
   gof_omit = "AIC|BIC|Log\\.Lik|RMSE"
 )
 
-#coefficient export
+# 6. coefficient export
 tidy_all <- bind_rows(lapply(names(models), function(nm) {
   broom::tidy(models[[nm]], conf.int = TRUE) %>%
     mutate(model = nm)
@@ -151,11 +193,14 @@ tidy_all <- bind_rows(lapply(names(models), function(nm) {
     p.value = round(p.value, 3)
   )
 
-write_csv(tidy_all, "Visuals/Tables/regression_tidy_all.csv")
+write_csv(
+  tidy_all,
+  "Regressions/Tables/regression_tidy_all.csv"
+) # frankly, I really doubt we will make use of this, but who knows
 
-#coefficient plot export
+# 7. coefficient plot export
 
-#models 1 to 4A
+# models using migration background
 terms_migbg <- c(
   "german_citizen_binaryYes",
   "migration_backgroundYes",
@@ -168,7 +213,7 @@ terms_migbg <- c(
   "uni_binaryUni"
 )
 
-#model 4B
+# models using migration generation
 terms_miggen <- c(
   "german_citizen_binaryYes",
   "migration_generation2nd gen",
@@ -208,43 +253,68 @@ plot_model_coefs <- function(mod, model_name, keep_terms, file_out) {
     filter(term %in% keep_terms) %>%
     mutate(term = pretty_term(term))
 
-  ggplot(df, aes(x = estimate, y = reorder(term, estimate))) +
+  p <- ggplot(df, aes(x = estimate, y = reorder(term, estimate))) +
     geom_vline(xintercept = 0, linetype = "dashed", color = "grey50") +
     geom_point(size = 2) +
     geom_errorbarh(aes(xmin = conf.low, xmax = conf.high), height = 0.2) +
     labs(x = "Coefficient (95% CI)", y = NULL, title = model_name) +
     theme_minimal(base_size = 12)
 
-  ggsave(file_out, width = 7.8, height = 4.6, dpi = 300)
+  ggsave(file_out, p, width = 7.8, height = 4.6, dpi = 300)
 }
 
 plot_model_coefs(
   m1,
   "Model 1 (Cit×MigBG + controls)",
   terms_migbg,
-  "Visuals/Figures/coefplot_M1.png"
+  "Regressions/Figures/coefplot_M1.png"
 )
+
+plot_model_coefs(
+  m1_alt_trust,
+  "Model 1 alternative trust (minimal trust scale)",
+  terms_migbg,
+  "Regressions/Figures/coefplot_M1_alt_trust.png"
+)
+
+plot_model_coefs(
+  m1_alt_migration,
+  "Model 1 alternative migration (migration generation)",
+  terms_miggen,
+  "Regressions/Figures/coefplot_M1_alt_migration.png"
+)
+
 plot_model_coefs(
   m2,
   "Model 2 (+ belonging split)",
   terms_migbg,
-  "Visuals/Figures/coefplot_M2.png"
+  "Regressions/Figures/coefplot_M2.png"
 )
+
 plot_model_coefs(
   m3,
   "Model 3 (+ discrimination)",
   terms_migbg,
-  "Visuals/Figures/coefplot_M3.png"
+  "Regressions/Figures/coefplot_M3.png"
 )
+
 plot_model_coefs(
-  m4A,
+  m4,
   "Model 4 (+ belonging split + discrimination)",
   terms_migbg,
-  "Visuals/Figures/coefplot_M4A.png"
+  "Regressions/Figures/coefplot_M4.png"
 )
+
 plot_model_coefs(
-  m4B,
-  "Model 4B (Cit×Migration generation + mediators)",
+  m4_alt_trust,
+  "Model 4 alternative trust (minimal trust scale)",
+  terms_migbg,
+  "Regressions/Figures/coefplot_M4_alt_trust.png"
+)
+
+plot_model_coefs(
+  m4_alt_migration,
+  "Model 4 alternative migration (migration generation)",
   terms_miggen,
-  "Visuals/Figures/coefplot_M4B.png"
+  "Regressions/Figures/coefplot_M4_alt_migration.png"
 )

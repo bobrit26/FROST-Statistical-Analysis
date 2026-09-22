@@ -154,6 +154,19 @@ ds <- ds %>%
     # final institutional trust average
     institution_mean = safe_rowmean(pick(matches("^in0[1-8]_"))),
 
+    #minimal trust average, aka only the 1st "I trust X" items from each battery
+    institution_mean_minimal = safe_rowmean(
+      pick(any_of(c(
+        "in01_01",
+        "in02_01",
+        "in03_01",
+        "in05_01",
+        "in06_01",
+        "in07_01",
+        "in08_01"
+      )))
+    ),
+
     # final discrimination frequency average
     discrim_mean = safe_rowmean(pick(matches("^di01_0?[1-7]$"))),
 

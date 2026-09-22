@@ -1,0 +1,7 @@
+var1,var2,r,p,n,stars,r_with_sig
+Trust_broad,Trust_minimal,0.972,0,82,***,0.972***
+German_citizenship,Migration_background,-0.537,0,86,***,-0.537***
+German_citizenship,Trust_broad,0.211,0.057,82,.,0.211.
+German_citizenship,Trust_minimal,0.188,0.09,82,.,0.188.
+Migration_background,Trust_minimal,-0.125,0.265,82,,-0.125
+Migration_background,Trust_broad,-0.122,0.274,82,,-0.122
