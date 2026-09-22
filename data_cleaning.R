@@ -249,13 +249,13 @@ ds <- ds %>%
   )
 
 # 7. ...and here we aggregate scores for personal experience
-pers_exp_frequency <- grep("_exp_binary$", names(ds), value = TRUE)
+pers_exp_number <- grep("_exp_binary$", names(ds), value = TRUE)
 pers_exp_degree <- grep("_exp_degree$", names(ds), value = TRUE)
 
 ds <- ds %>%
   mutate(
-    # frequency of experience, aka number of institutions with any experience
-    exp_frequency = safe_rowsum(pick(all_of(pers_exp_frequency))),
+    # number of experience, aka number of institutions with any experience
+    exp_number = safe_rowsum(pick(all_of(pers_exp_number))),
 
     # if experienced, mean degree across institutions; 1 = neg, 2 = mixed, 3 = pos
     exp_degree_mean = safe_rowmean(pick(all_of(pers_exp_degree)))

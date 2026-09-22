@@ -331,7 +331,7 @@ ds_cleaned <- ds_cleaned %>%
     pb_total = suppressWarnings(as.numeric(pb_total)),
     pb_citizenship = suppressWarnings(as.numeric(pb_citizenship)),
     pb_belonging = suppressWarnings(as.numeric(pb_belonging)),
-    exp_frequency = suppressWarnings(as.numeric(exp_frequency)),
+    exp_number = suppressWarnings(as.numeric(exp_number)),
     bund_mean = suppressWarnings(as.numeric(bund_mean)),
     council_mean = suppressWarnings(as.numeric(council_mean)),
     police_mean = suppressWarnings(as.numeric(police_mean)),
@@ -460,7 +460,12 @@ ds_corr_big <- ds_cleaned %>%
     Personal_belonging_total = pb_total,
     Belonging_citizenship = pb_citizenship,
     Belonging_sense = pb_belonging,
-    Personal_experience_frequency = exp_frequency
+    Personal_experience_number = exp_number,
+    Age = age,
+    Gender = suppressWarnings(as.numeric(as.character(gender_binary))),
+    University_education = suppressWarnings(as.numeric(as.character(
+      uni_binary
+    )))
   )
 
 cbig <- psych::corr.test(
@@ -697,9 +702,9 @@ save_plot_variants(
 
 # histogram - personal experience frequency
 hist_exp_base <- ds_cleaned %>%
-  filter(!is.na(exp_frequency)) %>%
-  ggplot(aes(x = exp_frequency)) +
-  labs(x = "Personal experience frequency", y = "Count")
+  filter(!is.na(exp_number)) %>%
+  ggplot(aes(x = exp_number)) +
+  labs(x = "Personal experience number", y = "Count")
 
 hist_exp_variants <- make_hist_variants(hist_exp_base, binwidth = 1)
 
@@ -707,7 +712,7 @@ save_plot_variants(
   plot_default = hist_exp_variants$default,
   plot_greyscale = hist_exp_variants$greyscale,
   plot_bluescale = hist_exp_variants$bluescale,
-  file_base = "hist_exp_frequency",
+  file_base = "hist_exp_number",
   subfolder = "Response rate",
   width = 6,
   height = 4,
@@ -937,19 +942,19 @@ ggsave(
   dpi = 300
 )
 
-# scatterplot - trust vs personal experience frequency
+# scatterplot - trust vs personal experience number
 p_scatter_expfreq <- ds_cleaned %>%
-  filter(!is.na(exp_frequency), !is.na(institution_mean)) %>%
-  ggplot(aes(x = exp_frequency, y = institution_mean)) +
+  filter(!is.na(exp_number), !is.na(institution_mean)) %>%
+  ggplot(aes(x = exp_number, y = institution_mean)) +
   geom_point(alpha = 0.35) +
   geom_smooth(method = "lm", se = TRUE) +
   labs(
-    x = "Personal experience frequency",
+    x = "Personal experience number",
     y = "Overall institutional trust (broad mean)"
   )
 
 ggsave(
-  "Descriptives/Figures/Correlations/scatter_trust_vs_exp_frequency.png",
+  "Descriptives/Figures/Correlations/scatter_trust_vs_exp_number.png",
   p_scatter_expfreq,
   width = 6,
   height = 4,
