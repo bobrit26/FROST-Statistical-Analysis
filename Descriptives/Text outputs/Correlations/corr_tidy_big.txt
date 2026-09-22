@@ -1,0 +1,15 @@
+# A tibble: 78 × 7
+   var1                     var2                          r     p     n stars r_with_sig
+   <chr>                    <chr>                     <dbl> <dbl> <dbl> <chr> <chr>     
+ 1 Trust_broad              Trust_minimal             0.972     0    82 ***   0.972***  
+ 2 German_citizenship       Migration_background     -0.537     0    86 ***   -0.537*** 
+ 3 German_citizenship       Migration_generation     -0.703     0    86 ***   -0.703*** 
+ 4 German_citizenship       Personal_belonging_total  0.423     0    76 ***   0.423***  
+ 5 Migration_background     Migration_generation      0.925     0   102 ***   0.925***  
+ 6 Personal_belonging_total Trust_broad               0.524     0    76 ***   0.524***  
+ 7 Personal_belonging_total Trust_minimal             0.481     0    76 ***   0.481***  
+ 8 Belonging_citizenship    German_citizenship        0.445     0    74 ***   0.445***  
+ 9 Belonging_citizenship    Personal_belonging_total  0.793     0    74 ***   0.793***  
+10 Belonging_citizenship    Belonging_sense           0.459     0    73 ***   0.459***  
+# ℹ 68 more rows
+# ℹ Use `print(n = ...)` to see more rows

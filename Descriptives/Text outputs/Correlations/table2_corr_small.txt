@@ -1,0 +1,5 @@
+                   var Trust_broad Trust_minimal German_citizenship Migration_background
+1          Trust_broad        1.00          0.97               0.21                -0.12
+2        Trust_minimal        0.97          1.00               0.19                -0.12
+3   German_citizenship        0.21          0.19               1.00                -0.54
+4 Migration_background       -0.12         -0.12              -0.54                 1.00

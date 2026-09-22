@@ -74,6 +74,11 @@ dir.create(
   showWarnings = FALSE
 )
 dir.create(
+  "Descriptives/Text outputs/Correlations",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+dir.create(
   "Descriptives/Text outputs/Cronbach's alpha",
   recursive = TRUE,
   showWarnings = FALSE
@@ -419,6 +424,17 @@ save_html_table(
 )
 
 corr_tidy_small <- make_corr_tidy(csmall)
+
+save_txt_output(
+  corr_tidy_small,
+  "Descriptives/Text outputs/Correlations/corr_tidy_small.txt"
+)
+
+save_txt_output(
+  r_tbl_small,
+  "Descriptives/Text outputs/Correlations/table2_corr_small.txt"
+)
+
 write_csv(
   corr_tidy_small,
   "Descriptives/Tables/Correlations/corr_selected_tidy_small.csv"
@@ -488,6 +504,17 @@ save_html_table(
 )
 
 corr_tidy_big <- make_corr_tidy(cbig)
+
+save_txt_output(
+  corr_tidy_big,
+  "Descriptives/Text outputs/Correlations/corr_tidy_big.txt"
+)
+
+save_txt_output(
+  r_tbl_big,
+  "Descriptives/Text outputs/Correlations/table2_corr_big.txt"
+)
+
 write_csv(
   corr_tidy_big,
   "Descriptives/Tables/Correlations/corr_selected_tidy_big.csv"
