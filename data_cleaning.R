@@ -171,7 +171,7 @@ ds <- ds %>%
     discrim_mean = safe_rowmean(pick(matches("^di01_0?[1-7]$"))),
 
     # final personal belonging total
-    pb_total = safe_rowsum(pick(matches("^pb01_0?[1-5]$"))),
+    pb_total = safe_rowmean(pick(matches("^pb01_0?[1-5]$"))),
 
     # 2 PB averages - as a reminder from the future for you and for me, I figured that our 5-item battery was really measuring...
     # ...2 different things (as a consequence of the battery being made by multiple people), and, as such, I split it here into...

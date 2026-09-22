@@ -997,7 +997,81 @@ ggsave(
   dpi = 300
 )
 
-# 15. scale checks - Cronbach's alpha
+# 15. descriptive plots - trust by institution x personal experience with that institution
+
+# here we match each institution-specific trust mean to the corresponding personal experience binary
+inst_exp_long <- bind_rows(
+  ds_cleaned %>%
+    transmute(
+      institution = "Bundestag",
+      trust = bund_mean,
+      experience = pe01_exp_binary
+    ),
+  ds_cleaned %>%
+    transmute(
+      institution = "Local council",
+      trust = council_mean,
+      experience = pe02_exp_binary
+    ),
+  ds_cleaned %>%
+    transmute(
+      institution = "Police",
+      trust = police_mean,
+      experience = pe03_exp_binary
+    ),
+  ds_cleaned %>%
+    transmute(
+      institution = "Courts",
+      trust = court_mean,
+      experience = pe04_exp_binary
+    ),
+  ds_cleaned %>%
+    transmute(
+      institution = "Public media",
+      trust = media_mean,
+      experience = pe05_exp_binary
+    ),
+  ds_cleaned %>%
+    transmute(
+      institution = "Immigration office",
+      trust = immigr_mean,
+      experience = pe06_exp_binary
+    ),
+  ds_cleaned %>%
+    transmute(
+      institution = "Citizens' office",
+      trust = citizens_mean,
+      experience = pe07_exp_binary
+    )
+) %>%
+  filter(!is.na(trust), !is.na(experience)) %>%
+  mutate(
+    experience = factor(
+      experience,
+      levels = c(0, 1),
+      labels = c("No experience", "Had experience")
+    )
+  )
+
+# boxplot: trust by personal experience, faceted by institution
+p_inst_exp <- ggplot(inst_exp_long, aes(x = experience, y = trust)) +
+  geom_boxplot() +
+  facet_wrap(~institution) +
+  labs(
+    x = "Personal experience with institution",
+    y = "Trust (mean)"
+  ) +
+  theme_minimal()
+
+ggsave(
+  "Descriptives/Figures/Correlations/box_trust_by_institution_x_experience.png",
+  p_inst_exp,
+  width = 10,
+  height = 6,
+  dpi = 300
+)
+
+# 16. scale checks - Cronbach's alpha
 
 # Cronbach's alpha as a simple reliability check to see if the items in a battery seem to hang together as one scale
 # is it better than EFA? I don't know, but I read that it's simpler and may just work better for our low-N pool
