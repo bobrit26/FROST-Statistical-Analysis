@@ -1,7 +1,7 @@
 Factor Analysis using method =  minres
 Call: fa(r = trust_items, nfactors = 2, rotate = "oblimin", fm = "minres")
 Standardized loadings (pattern matrix) based upon correlation matrix
-          MR1   MR2   h2   u2 com
+          MR2   MR1   h2   u2 com
 in01_01  0.62  0.28 0.55 0.45 1.4
 in01_02  0.62  0.30 0.57 0.43 1.5
 in02_01  0.64  0.30 0.59 0.41 1.4
@@ -26,7 +26,7 @@ in08_02  0.74 -0.16 0.52 0.48 1.1
 in08_04  0.74 -0.13 0.53 0.47 1.1
 in08_05  0.77 -0.17 0.56 0.44 1.1
 
-                       MR1  MR2
+                       MR2  MR1
 SS loadings           9.60 3.87
 Proportion Var        0.42 0.17
 Cumulative Var        0.42 0.59
@@ -34,9 +34,9 @@ Proportion Explained  0.71 0.29
 Cumulative Proportion 0.71 1.00
 
  With factor correlations of 
-     MR1  MR2
-MR1 1.00 0.22
-MR2 0.22 1.00
+     MR2  MR1
+MR2 1.00 0.22
+MR1 0.22 1.00
 
 Mean item complexity =  1.1
 Test of the hypothesis that 2 factors are sufficient.
@@ -55,7 +55,7 @@ RMSEA index =  0.559  and the 90 % confidence intervals are  0.551 0.574
 BIC =  5886
 Fit based upon off diagonal values = 0.94
 Measures of factor score adequacy             
-                                                   MR1  MR2
+                                                   MR2  MR1
 Correlation of (regression) scores with factors   0.98 0.97
 Multiple R square of scores with factors          0.96 0.93
 Minimum correlation of possible factor scores     0.92 0.87
