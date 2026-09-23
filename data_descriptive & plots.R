@@ -15,76 +15,74 @@ ds_cleaned <- read_csv("data_frost_cleaned.csv", show_col_types = FALSE)
 
 dir.create("Descriptives", showWarnings = FALSE)
 
-dir.create("Descriptives/Tables", recursive = TRUE, showWarnings = FALSE)
+dir.create("Descriptives/Response rate", recursive = TRUE, showWarnings = FALSE)
 dir.create(
-  "Descriptives/Tables/Response rate",
+  "Descriptives/Response rate/Tables",
   recursive = TRUE,
   showWarnings = FALSE
 )
 dir.create(
-  "Descriptives/Tables/Correlations",
+  "Descriptives/Response rate/Figures",
   recursive = TRUE,
   showWarnings = FALSE
 )
 dir.create(
-  "Descriptives/Tables/Cronbach's alpha",
+  "Descriptives/Response rate/Text outputs",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+dir.create("Descriptives/Correlations", recursive = TRUE, showWarnings = FALSE)
+dir.create(
+  "Descriptives/Correlations/Tables",
   recursive = TRUE,
   showWarnings = FALSE
 )
 dir.create(
-  "Descriptives/Tables/EFA",
+  "Descriptives/Correlations/Figures",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+dir.create(
+  "Descriptives/Correlations/Text outputs",
   recursive = TRUE,
   showWarnings = FALSE
 )
 
 dir.create(
-  "Descriptives/Figures",
+  "Descriptives/Cronbach's alpha",
   recursive = TRUE,
   showWarnings = FALSE
 )
 dir.create(
-  "Descriptives/Figures/Response rate",
+  "Descriptives/Cronbach's alpha/Tables",
   recursive = TRUE,
   showWarnings = FALSE
 )
 dir.create(
-  "Descriptives/Figures/Correlations",
+  "Descriptives/Cronbach's alpha/Figures",
   recursive = TRUE,
   showWarnings = FALSE
 )
 dir.create(
-  "Descriptives/Figures/Cronbach's alpha",
-  recursive = TRUE,
-  showWarnings = FALSE
-)
-dir.create(
-  "Descriptives/Figures/EFA",
-  recursive = TRUE,
-  showWarnings = FALSE
-)
-dir.create(
-  "Descriptives/Figures/Misc",
+  "Descriptives/Cronbach's alpha/Text outputs",
   recursive = TRUE,
   showWarnings = FALSE
 )
 
+dir.create("Descriptives/EFA", recursive = TRUE, showWarnings = FALSE)
 dir.create(
-  "Descriptives/Text outputs",
+  "Descriptives/EFA/Tables",
   recursive = TRUE,
   showWarnings = FALSE
 )
 dir.create(
-  "Descriptives/Text outputs/Correlations",
+  "Descriptives/EFA/Figures",
   recursive = TRUE,
   showWarnings = FALSE
 )
 dir.create(
-  "Descriptives/Text outputs/Cronbach's alpha",
-  recursive = TRUE,
-  showWarnings = FALSE
-)
-dir.create(
-  "Descriptives/Text outputs/EFA",
+  "Descriptives/EFA/Text outputs",
   recursive = TRUE,
   showWarnings = FALSE
 )
@@ -207,9 +205,9 @@ save_plot_variants <- function(
   dpi = 300
 ) {
   prefix <- if (subfolder == "") {
-    "Descriptives/Figures"
+    "Descriptives/"
   } else {
-    paste0("Descriptives/Figures/", subfolder)
+    paste0("Descriptives/", subfolder)
   }
 
   # default version
@@ -384,7 +382,7 @@ tab1 <- response_rates(ds_cleaned, table1_vars) %>%
 
 save_html_table(
   tbl = tab1,
-  html_file = "Descriptives/Tables/Response rate/table1_response_rates.html",
+  html_file = "Descriptives/Response rate/Tables/table1_response_rates.html",
   caption_text = "Table 1. Response rates (key variables)"
 )
 
@@ -419,7 +417,7 @@ r_tbl_small <- as.data.frame(r_mat_small) %>%
 
 save_html_table(
   tbl = r_tbl_small,
-  html_file = "Descriptives/Tables/Correlations/table2_corr_small.html",
+  html_file = "Descriptives/Correlations/Tables/table2_corr_small.html",
   caption_text = "Table 2. Correlations (core variables)"
 )
 
@@ -427,7 +425,7 @@ corr_tidy_small <- make_corr_tidy(csmall)
 
 write.table(
   corr_tidy_small,
-  file = "Descriptives/Text outputs/Correlations/corr_selected_tidy_small.txt",
+  file = "Descriptives/Correlations/Text outputs/corr_selected_tidy_small.txt",
   sep = "\t",
   row.names = FALSE,
   quote = FALSE
@@ -435,7 +433,7 @@ write.table(
 
 write.table(
   r_tbl_small,
-  file = "Descriptives/Text outputs/Correlations/table2_corr_small.txt",
+  file = "Descriptives/Correlations/Text outputs/table2_corr_small.txt",
   sep = "\t",
   row.names = FALSE,
   quote = FALSE
@@ -443,12 +441,12 @@ write.table(
 
 write_csv(
   corr_tidy_small,
-  "Descriptives/Tables/Correlations/corr_selected_tidy_small.csv"
+  "Descriptives/Correlations/Tables/corr_selected_tidy_small.csv"
 )
 
 save_html_table(
   tbl = corr_tidy_small,
-  html_file = "Descriptives/Tables/Correlations/corr_selected_tidy_small.html",
+  html_file = "Descriptives/Correlations/Tables/corr_selected_tidy_small.html",
   caption_text = "Table 2a. Tidy correlations (core variables)"
 )
 
@@ -457,7 +455,7 @@ p_heat_small <- make_corr_heatmap(
   "Correlation heatmap (core variables)"
 )
 ggsave(
-  "Descriptives/Figures/Correlations/heatmap_corr_selected_small.png",
+  "Descriptives/Correlations/Figures/heatmap_corr_selected_small.png",
   p_heat_small,
   width = 7,
   height = 5.5,
@@ -505,7 +503,7 @@ r_tbl_big <- as.data.frame(r_mat_big) %>%
 
 save_html_table(
   tbl = r_tbl_big,
-  html_file = "Descriptives/Tables/Correlations/table3_corr_big.html",
+  html_file = "Descriptives/Correlations/Tables/table3_corr_big.html",
   caption_text = "Table 3. Correlations (expanded variables)"
 )
 
@@ -513,7 +511,7 @@ corr_tidy_big <- make_corr_tidy(cbig)
 
 write.table(
   corr_tidy_big,
-  file = "Descriptives/Text outputs/Correlations/corr_selected_tidy_big.txt",
+  file = "Descriptives/Correlations/Text outputs/corr_selected_tidy_big.txt",
   sep = "\t",
   row.names = FALSE,
   quote = FALSE
@@ -521,7 +519,7 @@ write.table(
 
 write.table(
   r_tbl_big,
-  file = "Descriptives/Text outputs/Correlations/table3_corr_big.txt",
+  file = "Descriptives/Correlations/Text outputs/table3_corr_big.txt",
   sep = "\t",
   row.names = FALSE,
   quote = FALSE
@@ -529,12 +527,12 @@ write.table(
 
 write_csv(
   corr_tidy_big,
-  "Descriptives/Tables/Correlations/corr_selected_tidy_big.csv"
+  "Descriptives/Correlations/Tables/corr_selected_tidy_big.csv"
 )
 
 save_html_table(
   tbl = corr_tidy_big,
-  html_file = "Descriptives/Tables/Correlations/corr_selected_tidy_big.html",
+  html_file = "Descriptives/Correlations/Tables/corr_selected_tidy_big.html",
   caption_text = "Table 3a. Tidy correlations (expanded variables)"
 )
 
@@ -543,7 +541,7 @@ p_heat_big <- make_corr_heatmap(
   "Correlation heatmap (expanded variables)"
 )
 ggsave(
-  "Descriptives/Figures/Correlations/heatmap_corr_selected_big.png",
+  "Descriptives/Correlations/Figures/heatmap_corr_selected_big.png",
   p_heat_big,
   width = 9,
   height = 7.5,
@@ -771,7 +769,7 @@ p_box_gen <- ds_cleaned %>%
   )
 
 ggsave(
-  "Descriptives/Figures/Correlations/box_trust_by_migration_generation.png",
+  "Descriptives/Correlations/Figures/box_trust_by_migration_generation.png",
   p_box_gen,
   width = 6.5,
   height = 4,
@@ -786,7 +784,7 @@ p_box_gen_min <- ds_cleaned %>%
   labs(x = "Migration generation", y = "Institutional trust (minimal mean)")
 
 ggsave(
-  "Descriptives/Figures/Correlations/box_trust_minimal_by_migration_generation.png",
+  "Descriptives/Correlations/Figures/box_trust_minimal_by_migration_generation.png",
   p_box_gen_min,
   width = 6.5,
   height = 4,
@@ -813,7 +811,7 @@ p_main <- ds_cleaned %>%
   labs(x = "German citizenship", y = "Overall institutional trust (broad mean)")
 
 ggsave(
-  "Descriptives/Figures/Correlations/plot_trust_by_citizenship_facet_migrationbg.png",
+  "Descriptives/Correlations/Figures/plot_trust_by_citizenship_facet_migrationbg.png",
   p_main,
   width = 8,
   height = 4.5,
@@ -840,7 +838,7 @@ p_main_min <- ds_cleaned %>%
   labs(x = "German citizenship", y = "Institutional trust (minimal mean)")
 
 ggsave(
-  "Descriptives/Figures/Correlations/plot_trust_minimal_by_citizenship_facet_migrationbg.png",
+  "Descriptives/Correlations/Figures/plot_trust_minimal_by_citizenship_facet_migrationbg.png",
   p_main_min,
   width = 8,
   height = 4.5,
@@ -861,7 +859,7 @@ p_cit_x_gen <- ds_cleaned %>%
   labs(x = "German citizenship", y = "Overall institutional trust (broad mean)")
 
 ggsave(
-  "Descriptives/Figures/Correlations/box_trust_by_citizenship_facet_migration_generation.png",
+  "Descriptives/Correlations/Figures/box_trust_by_citizenship_facet_migration_generation.png",
   p_cit_x_gen,
   width = 9,
   height = 4.5,
@@ -882,7 +880,7 @@ p_scatter_trust_compare <- ds_cleaned %>%
   )
 
 ggsave(
-  "Descriptives/Figures/Correlations/scatter_trust_broad_vs_minimal.png",
+  "Descriptives/Correlations/Figures/scatter_trust_broad_vs_minimal.png",
   p_scatter_trust_compare,
   width = 6,
   height = 4,
@@ -901,7 +899,7 @@ p_scatter_discr <- ds_cleaned %>%
   )
 
 ggsave(
-  "Descriptives/Figures/Correlations/scatter_trust_vs_discrimination.png",
+  "Descriptives/Correlations/Figures/scatter_trust_vs_discrimination.png",
   p_scatter_discr,
   width = 6,
   height = 4,
@@ -917,7 +915,7 @@ p_scatter_discr_min <- ds_cleaned %>%
   labs(x = "Discrimination (mean)", y = "Institutional trust (minimal mean)")
 
 ggsave(
-  "Descriptives/Figures/Correlations/scatter_trust_minimal_vs_discrimination.png",
+  "Descriptives/Correlations/Figures/scatter_trust_minimal_vs_discrimination.png",
   p_scatter_discr_min,
   width = 6,
   height = 4,
@@ -936,7 +934,7 @@ p_scatter_belong_citizenship <- ds_cleaned %>%
   )
 
 ggsave(
-  "Descriptives/Figures/Correlations/scatter_trust_vs_belonging_citizenship.png",
+  "Descriptives/Correlations/Figures/scatter_trust_vs_belonging_citizenship.png",
   p_scatter_belong_citizenship,
   width = 6,
   height = 4,
@@ -955,7 +953,7 @@ p_scatter_belong_sense <- ds_cleaned %>%
   )
 
 ggsave(
-  "Descriptives/Figures/Correlations/scatter_trust_vs_belonging_sense.png",
+  "Descriptives/Correlations/Figures/scatter_trust_vs_belonging_sense.png",
   p_scatter_belong_sense,
   width = 6,
   height = 4,
@@ -974,7 +972,7 @@ p_scatter_pbtotal <- ds_cleaned %>%
   )
 
 ggsave(
-  "Descriptives/Figures/Correlations/scatter_trust_vs_pb_total.png",
+  "Descriptives/Correlations/Figures/scatter_trust_vs_pb_total.png",
   p_scatter_pbtotal,
   width = 6,
   height = 4,
@@ -993,7 +991,7 @@ p_scatter_expfreq <- ds_cleaned %>%
   )
 
 ggsave(
-  "Descriptives/Figures/Correlations/scatter_trust_vs_exp_number.png",
+  "Descriptives/Correlations/Figures/scatter_trust_vs_exp_number.png",
   p_scatter_expfreq,
   width = 6,
   height = 4,
@@ -1034,7 +1032,7 @@ p_inst <- ggplot(inst_long, aes(x = institution, y = trust)) +
   labs(x = NULL, y = "Trust (mean)")
 
 ggsave(
-  "Descriptives/Figures/Correlations/box_trust_by_institution.png",
+  "Descriptives/Correlations/Figures/box_trust_by_institution.png",
   p_inst,
   width = 7,
   height = 4.5,
@@ -1108,7 +1106,7 @@ p_inst_exp <- ggplot(inst_exp_long, aes(x = experience, y = trust)) +
   theme_minimal()
 
 ggsave(
-  "Descriptives/Figures/Correlations/box_trust_by_institution_x_experience.png",
+  "Descriptives/Correlations/Figures/box_trust_by_institution_x_experience.png",
   p_inst_exp,
   width = 10,
   height = 6,
@@ -1129,7 +1127,7 @@ trust_items <- ds_cleaned %>%
 alpha_trust <- psych::alpha(trust_items)
 save_txt_output(
   alpha_trust,
-  "Descriptives/Text outputs/Cronbach's alpha/alpha_trust.txt"
+  "Descriptives/Cronbach's alpha/Text outputs/alpha_trust.txt"
 )
 
 # personal belonging items - all 5 together
@@ -1140,7 +1138,7 @@ pb_items <- ds_cleaned %>%
 alpha_pb_total <- psych::alpha(pb_items)
 save_txt_output(
   alpha_pb_total,
-  "Descriptives/Text outputs/Cronbach's alpha/alpha_pb_total.txt"
+  "Descriptives/Cronbach's alpha/Text outputs/alpha_pb_total.txt"
 )
 
 # personal belonging, citizenship subscale
@@ -1151,7 +1149,7 @@ pb_cit_items <- ds_cleaned %>%
 alpha_pb_cit <- psych::alpha(pb_cit_items)
 save_txt_output(
   alpha_pb_cit,
-  "Descriptives/Text outputs/Cronbach's alpha/alpha_pb_citizenship.txt"
+  "Descriptives/Cronbach's alpha/Text outputs/alpha_pb_citizenship.txt"
 )
 
 # personal belonging, sense of belonging subscale
@@ -1162,7 +1160,7 @@ pb_belong_items <- ds_cleaned %>%
 alpha_pb_belong <- psych::alpha(pb_belong_items)
 save_txt_output(
   alpha_pb_belong,
-  "Descriptives/Text outputs/Cronbach's alpha/alpha_pb_belonging.txt"
+  "Descriptives/Cronbach's alpha/Text outputs/alpha_pb_belonging.txt"
 )
 
 # discrimination items - optional, but useful to see whether the frequency battery hangs together
@@ -1173,7 +1171,7 @@ discrim_items <- ds_cleaned %>%
 alpha_discrim <- psych::alpha(discrim_items)
 save_txt_output(
   alpha_discrim,
-  "Descriptives/Text outputs/Cronbach's alpha/alpha_discrimination.txt"
+  "Descriptives/Cronbach's alpha/Text outputs/alpha_discrimination.txt"
 )
 
 # make a small alpha summary table so the text outputs also have a visual representation
@@ -1199,7 +1197,7 @@ alpha_summary <- tibble(
 
 save_html_table(
   tbl = alpha_summary,
-  html_file = "Descriptives/Tables/Cronbach's alpha/alpha_summary.html",
+  html_file = "Descriptives/Cronbach's alpha/Tables/alpha_summary.html",
   caption_text = "Table 4. Cronbach's alpha summary"
 )
 
@@ -1216,7 +1214,7 @@ alpha_base <- ggplot(
 alpha_variants <- make_alpha_bar_variants(alpha_base)
 
 ggsave(
-  "Descriptives/Figures/Cronbach's alpha/alpha_summary_barplot.png",
+  "Descriptives/Cronbach's alpha/Figures/alpha_summary_barplot.png",
   alpha_variants$default,
   width = 7,
   height = 4.5,
@@ -1224,7 +1222,7 @@ ggsave(
 )
 
 ggsave(
-  "Descriptives/Figures/Cronbach's alpha/alpha_summary_barplot_blue.png",
+  "Descriptives/Cronbach's alpha/Figures/alpha_summary_barplot_blue.png",
   alpha_variants$blue,
   width = 7,
   height = 4.5,
@@ -1238,7 +1236,7 @@ ggsave(
 
 # EFA for personal belonging items
 png(
-  "Descriptives/Figures/EFA/efa_parallel_pb.png",
+  "Descriptives/EFA/Figures/efa_parallel_pb.png",
   width = 900,
   height = 700
 )
@@ -1254,14 +1252,14 @@ dev.off()
 efa_pb_1 <- fa(pb_items, nfactors = 1, rotate = "oblimin", fm = "minres")
 save_txt_output(
   efa_pb_1,
-  "Descriptives/Text outputs/EFA/efa_pb_1factor.txt"
+  "Descriptives/EFA/Text outputs/efa_pb_1factor.txt"
 )
 
 # two-factor solution - this is the key comparison for our split battery idea
 efa_pb_2 <- fa(pb_items, nfactors = 2, rotate = "oblimin", fm = "minres")
 save_txt_output(
   efa_pb_2,
-  "Descriptives/Text outputs/EFA/efa_pb_2factor.txt"
+  "Descriptives/EFA/Text outputs/efa_pb_2factor.txt"
 )
 
 # visual summary tables for EFA PB loadings
@@ -1275,19 +1273,19 @@ efa_pb_2_tbl <- as.data.frame(unclass(efa_pb_2$loadings)) %>%
 
 save_html_table(
   tbl = efa_pb_1_tbl,
-  html_file = "Descriptives/Tables/EFA/efa_pb_1factor.html",
+  html_file = "Descriptives/EFA/Tables/efa_pb_1factor.html",
   caption_text = "Table 5. EFA loadings for personal belonging items (1-factor)"
 )
 
 save_html_table(
   tbl = efa_pb_2_tbl,
-  html_file = "Descriptives/Tables/EFA/efa_pb_2factor.html",
+  html_file = "Descriptives/EFA/Tables/efa_pb_2factor.html",
   caption_text = "Table 6. EFA loadings for personal belonging items (2-factor)"
 )
 
 # also EFA for trust items
 png(
-  "Descriptives/Figures/EFA/efa_parallel_trust.png",
+  "Descriptives/EFA/Figures/efa_parallel_trust.png",
   width = 900,
   height = 700
 )
@@ -1303,14 +1301,14 @@ dev.off()
 efa_trust_1 <- fa(trust_items, nfactors = 1, rotate = "oblimin", fm = "minres")
 save_txt_output(
   efa_trust_1,
-  "Descriptives/Text outputs/EFA/efa_trust_1factor.txt"
+  "Descriptives/EFA/Text outputs/efa_trust_1factor.txt"
 )
 
 # two-factor solution - probably useful as a comparison if the trust battery does not look clearly one-dimensional
 efa_trust_2 <- fa(trust_items, nfactors = 2, rotate = "oblimin", fm = "minres")
 save_txt_output(
   efa_trust_2,
-  "Descriptives/Text outputs/EFA/efa_trust_2factor.txt"
+  "Descriptives/EFA/Text outputs/efa_trust_2factor.txt"
 )
 
 # visual summary tables for EFA trust loadings
@@ -1324,13 +1322,13 @@ efa_trust_2_tbl <- as.data.frame(unclass(efa_trust_2$loadings)) %>%
 
 save_html_table(
   tbl = efa_trust_1_tbl,
-  html_file = "Descriptives/Tables/EFA/efa_trust_1factor.html",
+  html_file = "Descriptives/EFA/Tables/efa_trust_1factor.html",
   caption_text = "Table 7. EFA loadings for trust items (1-factor)"
 )
 
 save_html_table(
   tbl = efa_trust_2_tbl,
-  html_file = "Descriptives/Tables/EFA/efa_trust_2factor.html",
+  html_file = "Descriptives/EFA/Tables/efa_trust_2factor.html",
   caption_text = "Table 8. EFA loadings for trust items (2-factor)"
 )
 
@@ -1356,7 +1354,7 @@ p_grade <- ggplot(frost_grade, aes(x = stage, y = value, fill = stage)) +
   )
 
 ggsave(
-  "Descriptives/Figures/Misc/FROST_grade_plot.png",
+  "Descriptives/Misc/Figures/FROST_grade_plot.png",
   p_grade,
   width = 5,
   height = 3.5,
