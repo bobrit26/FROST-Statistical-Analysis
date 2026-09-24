@@ -1,0 +1,46 @@
+Factor Analysis using method =  minres
+Call: fa(r = trust_items_minimal, nfactors = 2, rotate = "oblimin", 
+    fm = "minres")
+Standardized loadings (pattern matrix) based upon correlation matrix
+          MR2   MR1   h2      u2 com
+in01_01  1.03 -0.08 1.00  0.0022 1.0
+in02_01  0.53  0.37 0.57  0.4261 1.8
+in03_01  0.29  0.32 0.26  0.7358 2.0
+in05_01 -0.04  1.02 1.01 -0.0057 1.0
+in06_01  0.18  0.25 0.14  0.8635 1.8
+in07_01  0.55  0.31 0.53  0.4656 1.6
+in08_01  0.27  0.49 0.42  0.5775 1.5
+
+                       MR2  MR1
+SS loadings           2.04 1.89
+Proportion Var        0.29 0.27
+Cumulative Var        0.29 0.56
+Proportion Explained  0.52 0.48
+Cumulative Proportion 0.52 1.00
+
+ With factor correlations of 
+     MR2  MR1
+MR2 1.00 0.42
+MR1 0.42 1.00
+
+Mean item complexity =  1.5
+Test of the hypothesis that 2 factors are sufficient.
+
+df null model =  21  with the objective function =  3.07 with Chi Square =  300
+df of  the model are 8  and the objective function was  0.29 
+
+The root mean square of the residuals (RMSR) is  0.06 
+The df corrected root mean square of the residuals is  0.1 
+
+The harmonic n.obs is  65 with the empirical chi square  5  with prob <  0.76 
+The total n.obs was  102  with Likelihood Chi Square =  28.02  with prob <  0.00047 
+
+Tucker Lewis Index of factoring reliability =  0.809
+RMSEA index =  0.156  and the 90 % confidence intervals are  0.097 0.223
+BIC =  -8.98
+Fit based upon off diagonal values = 0.98
+Measures of factor score adequacy             
+                                                  MR2 MR1
+Correlation of (regression) scores with factors     1   1
+Multiple R square of scores with factors            1   1
+Minimum correlation of possible factor scores       1   1

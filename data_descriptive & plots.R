@@ -1124,10 +1124,30 @@ trust_items <- ds_cleaned %>%
   select(matches("^in0[1-8]_")) %>%
   mutate(across(everything(), ~ suppressWarnings(as.numeric(.))))
 
+# minimal trust items - only the direct "I trust X" questions from each institution battery
+trust_items_minimal <- ds_cleaned %>%
+  select(any_of(c(
+    "in01_01",
+    "in02_01",
+    "in03_01",
+    "in05_01",
+    "in06_01",
+    "in07_01",
+    "in08_01"
+  ))) %>%
+  mutate(across(everything(), ~ suppressWarnings(as.numeric(.))))
+
 alpha_trust <- psych::alpha(trust_items)
 save_txt_output(
   alpha_trust,
   "Descriptives/Cronbach's alpha/Text outputs/alpha_trust.txt"
+)
+
+# minimal trust battery
+alpha_trust_minimal <- psych::alpha(trust_items_minimal)
+save_txt_output(
+  alpha_trust_minimal,
+  "Descriptives/Cronbach's alpha/Text outputs/alpha_trust_minimal.txt"
 )
 
 # personal belonging items - all 5 together
@@ -1178,6 +1198,7 @@ save_txt_output(
 alpha_summary <- tibble(
   Scale = c(
     "Trust battery",
+    "Minimal trust battery",
     "Personal belonging (all 5 items)",
     "PB citizenship subscale",
     "PB belonging subscale",
@@ -1186,6 +1207,7 @@ alpha_summary <- tibble(
   Alpha = round(
     c(
       alpha_trust$total$raw_alpha,
+      alpha_trust_minimal$total$raw_alpha,
       alpha_pb_total$total$raw_alpha,
       alpha_pb_cit$total$raw_alpha,
       alpha_pb_belong$total$raw_alpha,
@@ -1311,6 +1333,45 @@ save_txt_output(
   "Descriptives/EFA/Text outputs/efa_trust_2factor.txt"
 )
 
+# also EFA for minimal trust items
+
+png(
+  "Descriptives/EFA/Figures/efa_parallel_trust_minimal.png",
+  width = 900,
+  height = 700
+)
+fa.parallel(
+  trust_items_minimal,
+  fa = "fa",
+  fm = "minres",
+  main = "Parallel analysis: minimal trust items"
+)
+dev.off()
+
+# one-factor solution for minimal trust
+efa_trust_minimal_1 <- fa(
+  trust_items_minimal,
+  nfactors = 1,
+  rotate = "oblimin",
+  fm = "minres"
+)
+save_txt_output(
+  efa_trust_minimal_1,
+  "Descriptives/EFA/Text outputs/efa_trust_minimal_1factor.txt"
+)
+
+# two-factor solution for minimal trust
+efa_trust_minimal_2 <- fa(
+  trust_items_minimal,
+  nfactors = 2,
+  rotate = "oblimin",
+  fm = "minres"
+)
+save_txt_output(
+  efa_trust_minimal_2,
+  "Descriptives/EFA/Text outputs/efa_trust_minimal_2factor.txt"
+)
+
 # visual summary tables for EFA trust loadings
 efa_trust_1_tbl <- as.data.frame(unclass(efa_trust_1$loadings)) %>%
   rownames_to_column("item") %>%
@@ -1330,6 +1391,31 @@ save_html_table(
   tbl = efa_trust_2_tbl,
   html_file = "Descriptives/EFA/Tables/efa_trust_2factor.html",
   caption_text = "Table 8. EFA loadings for trust items (2-factor)"
+)
+
+# visual summary tables for EFA minimal trust loadings
+efa_trust_minimal_1_tbl <- as.data.frame(unclass(
+  efa_trust_minimal_1$loadings
+)) %>%
+  rownames_to_column("item") %>%
+  mutate(across(-item, ~ round(., 3)))
+
+efa_trust_minimal_2_tbl <- as.data.frame(unclass(
+  efa_trust_minimal_2$loadings
+)) %>%
+  rownames_to_column("item") %>%
+  mutate(across(-item, ~ round(., 3)))
+
+save_html_table(
+  tbl = efa_trust_minimal_1_tbl,
+  html_file = "Descriptives/EFA/Tables/efa_trust_minimal_1factor.html",
+  caption_text = "Table 9. EFA loadings for minimal trust items (1-factor)"
+)
+
+save_html_table(
+  tbl = efa_trust_minimal_2_tbl,
+  html_file = "Descriptives/EFA/Tables/efa_trust_minimal_2factor.html",
+  caption_text = "Table 10. EFA loadings for minimal trust items (2-factor)"
 )
 
 # 17. mystery graph - here be dragons
