@@ -45,11 +45,12 @@ ds <- ds %>%
     )
   )
 
-# 3. output folders for the visuals
+# 3. output folders for regressions
 
 dir.create("Regressions", showWarnings = FALSE)
 dir.create("Regressions/Tables", recursive = TRUE, showWarnings = FALSE)
 dir.create("Regressions/Figures", recursive = TRUE, showWarnings = FALSE)
+dir.create("Regressions/Text outputs", recursive = TRUE, showWarnings = FALSE)
 
 # 4. regression models
 
@@ -193,10 +194,50 @@ tidy_all <- bind_rows(lapply(names(models), function(nm) {
     p.value = round(p.value, 3)
   )
 
+# csv version - useful for filtering and later interpretation
 write_csv(
   tidy_all,
   "Regressions/Tables/regression_tidy_all.csv"
-) # frankly, I really doubt we will make use of this, but who knows
+)
+
+# txt version - useful for quick reading and sending around
+write.table(
+  tidy_all,
+  file = "Regressions/Text outputs/regression_tidy_all.txt",
+  sep = "\t",
+  row.names = FALSE,
+  quote = FALSE
+)
+
+# helper for saving full regression summaries to txt
+save_txt_output <- function(object, file_out) {
+  capture.output(object, file = file_out)
+}
+
+# full model summaries
+save_txt_output(summary(m0), "Regressions/Text outputs/model_0_summary.txt")
+save_txt_output(summary(m1), "Regressions/Text outputs/model_1_summary.txt")
+save_txt_output(
+  summary(m1_alt_trust),
+  "Regressions/Text outputs/model_1_alt_trust_summary.txt"
+)
+save_txt_output(
+  summary(m1_alt_migration),
+  "Regressions/Text outputs/model_1_alt_migration_summary.txt"
+)
+save_txt_output(summary(m2), "Regressions/Text outputs/model_2_summary.txt")
+save_txt_output(summary(m3), "Regressions/Text outputs/model_3_summary.txt")
+save_txt_output(summary(m4), "Regressions/Text outputs/model_4_summary.txt")
+save_txt_output(
+  summary(m4_alt_trust),
+  "Regressions/Text outputs/model_4_alt_trust_summary.txt"
+)
+save_txt_output(
+  summary(m4_alt_migration),
+  "Regressions/Text outputs/model_4_alt_migration_summary.txt"
+)
+
+# frankly, I really doubt we will make use of this, but who knows
 
 # 7. coefficient plot export
 

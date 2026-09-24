@@ -1,0 +1,30 @@
+
+Call:
+lm(formula = institution_mean_minimal ~ german_citizen_binary * 
+    migration_background + age + gender_binary + uni_binary + 
+    pb_citizenship + pb_belonging + discrim_mean, data = ds)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-3.02714 -0.76545  0.00724  0.81790  2.15279 
+
+Coefficients:
+                                                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                       2.24145    1.33197   1.683  0.09788 .  
+german_citizen_binaryYes                          1.97445    1.28439   1.537  0.12976    
+migration_backgroundYes                           1.26985    1.25338   1.013  0.31527    
+age                                               0.01080    0.01259   0.858  0.39455    
+gender_binaryMale                                 0.01782    0.31014   0.057  0.95438    
+uni_binaryUni                                    -0.13186    0.41488  -0.318  0.75178    
+pb_citizenship                                   -0.26607    0.09445  -2.817  0.00665 ** 
+pb_belonging                                      0.57445    0.09546   6.018 1.34e-07 ***
+discrim_mean                                     -0.13147    0.20742  -0.634  0.52874    
+german_citizen_binaryYes:migration_backgroundYes -1.93363    1.30249  -1.485  0.14317    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.155 on 57 degrees of freedom
+  (35 observations deleted due to missingness)
+Multiple R-squared:  0.5249,	Adjusted R-squared:  0.4499 
+F-statistic: 6.997 on 9 and 57 DF,  p-value: 9.948e-07
+
