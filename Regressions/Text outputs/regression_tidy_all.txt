@@ -28,6 +28,16 @@ gender_binaryMale	0.298	0.35	0.852247685493978	0.397	-0.4	0.996	Model 1: Alterna
 uni_binaryUni	-0.052	0.433	-0.119303286110283	0.905	-0.915	0.812	Model 1: Alternative migration - migration generation
 german_citizen_binaryYes:migration_generation2nd gen	-2.135	2.051	-1.0408470334174	0.302	-6.229	1.959	Model 1: Alternative migration - migration generation
 german_citizen_binaryYes:migration_generation1st gen	-3.29	1.587	-2.07320744474585	0.042	-6.457	-0.123	Model 1: Alternative migration - migration generation
+(Intercept)	2.103	1.499	1.40291097106199	0.165	-0.89	5.095	Model 1: Alternative residence - length of residence in Germany
+german_citizen_binaryYes	3.919	1.654	2.36980900977484	0.021	0.617	7.221	Model 1: Alternative residence - length of residence in Germany
+migration_backgroundYes	3.112	1.487	2.09315456866292	0.04	0.144	6.08	Model 1: Alternative residence - length of residence in Germany
+age	0.007	0.015	0.483962807181099	0.63	-0.023	0.038	Model 1: Alternative residence - length of residence in Germany
+gender_binaryMale	0.35	0.355	0.987087132405299	0.327	-0.358	1.059	Model 1: Alternative residence - length of residence in Germany
+uni_binaryUni	-0.016	0.469	-0.0337862256320337	0.973	-0.953	0.921	Model 1: Alternative residence - length of residence in Germany
+length_residence_4cats6-15 years	-0.38	0.669	-0.56813551950933	0.572	-1.716	0.956	Model 1: Alternative residence - length of residence in Germany
+length_residence_4cats16+ years	0.325	0.858	0.378224022565296	0.706	-1.389	2.039	Model 1: Alternative residence - length of residence in Germany
+length_residence_4catsSince birth	0.013	0.852	0.0147999312537837	0.988	-1.688	1.713	Model 1: Alternative residence - length of residence in Germany
+german_citizen_binaryYes:migration_backgroundYes	-3.463	1.558	-2.22345633110557	0.03	-6.574	-0.353	Model 1: Alternative residence - length of residence in Germany
 (Intercept)	1.968	1.179	1.66844180330419	0.101	-0.393	4.329	Model 2: + Belonging (split)
 german_citizen_binaryYes	1.606	1.173	1.36999506560721	0.176	-0.741	3.953	Model 2: + Belonging (split)
 migration_backgroundYes	1.004	1.149	0.873925795757403	0.386	-1.296	3.304	Model 2: + Belonging (split)

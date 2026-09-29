@@ -32,6 +32,10 @@ ds <- ds %>%
       migration_generation,
       levels = c("Non-migrant", "2nd gen", "1st gen")
     ),
+    length_residence_4cats = factor(
+      length_residence_4cats,
+      levels = c("0-5 years", "6-15 years", "16+ years", "Since birth")
+    ),
 
     gender_binary = factor(
       gender_binary,
@@ -64,7 +68,7 @@ m0 <- lm(
   data = ds
 )
 
-#model 1A: baseline interaction model + 3 basic controls
+#model 1: baseline interaction model + 3 basic controls
 m1 <- lm(
   institution_mean ~ german_citizen_binary *
     migration_background +
@@ -95,6 +99,17 @@ m1_alt_migration <- lm(
     age + #controls
     gender_binary +
     uni_binary,
+  data = ds
+)
+
+# model 1 with alternative residence: model 1 + length of residence in Germany
+m1_alt_residence <- lm(
+  institution_mean ~ german_citizen_binary *
+    migration_background +
+    age + #controls
+    gender_binary +
+    uni_binary +
+    length_residence_4cats,
   data = ds
 )
 
@@ -164,6 +179,7 @@ models <- list(
   "Model 1: Cit×MigBG + controls" = m1,
   "Model 1: Alternative trust - minimal trust scale" = m1_alt_trust,
   "Model 1: Alternative migration - migration generation" = m1_alt_migration,
+  "Model 1: Alternative residence - length of residence in Germany" = m1_alt_residence,
   "Model 2: + Belonging (split)" = m2,
   "Model 3: + Discrimination" = m3,
   "Model 4: + Belonging (split) + Discrim" = m4,
@@ -225,6 +241,10 @@ save_txt_output(
   summary(m1_alt_migration),
   "Regressions/Text outputs/model_1_alt_migration_summary.txt"
 )
+save_txt_output(
+  summary(m1_alt_residence),
+  "Regressions/Text outputs/model_1_alt_residence_summary.txt"
+)
 save_txt_output(summary(m2), "Regressions/Text outputs/model_2_summary.txt")
 save_txt_output(summary(m3), "Regressions/Text outputs/model_3_summary.txt")
 save_txt_output(summary(m4), "Regressions/Text outputs/model_4_summary.txt")
@@ -269,6 +289,19 @@ terms_miggen <- c(
   "uni_binaryUni"
 )
 
+# model using migration background + residence length
+terms_migbg_residence <- c(
+  "german_citizen_binaryYes",
+  "migration_backgroundYes",
+  "german_citizen_binaryYes:migration_backgroundYes",
+  "length_residence_4cats6-15 years",
+  "length_residence_4cats16+ years",
+  "length_residence_4catsSince birth",
+  "age",
+  "gender_binaryMale",
+  "uni_binaryUni"
+)
+
 pretty_term <- function(x) {
   dplyr::recode(
     x,
@@ -279,6 +312,9 @@ pretty_term <- function(x) {
     "migration_generation1st gen" = "1st gen (vs Non-migrant)",
     "german_citizen_binaryYes:migration_generation2nd gen" = "Citizenship × 2nd gen",
     "german_citizen_binaryYes:migration_generation1st gen" = "Citizenship × 1st gen",
+    "length_residence_4cats6-15 years" = "Residence: 6-15 years",
+    "length_residence_4cats16+ years" = "Residence: 16+ years",
+    "length_residence_4catsSince birth" = "Residence: Since birth",
     "pb_citizenship" = "Belonging: citizenship items",
     "pb_belonging" = "Belonging: belonging items",
     "discrim_mean" = "Discrimination (mean)",
@@ -323,6 +359,13 @@ plot_model_coefs(
   "Model 1 alternative migration (migration generation)",
   terms_miggen,
   "Regressions/Figures/coefplot_M1_alt_migration.png"
+)
+
+plot_model_coefs(
+  m1_alt_residence,
+  "Model 1 alternative residence (length of residence in Germany)",
+  terms_migbg_residence,
+  "Regressions/Figures/coefplot_M1_alt_residence.png"
 )
 
 plot_model_coefs(

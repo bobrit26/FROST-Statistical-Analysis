@@ -24,8 +24,8 @@ df of  the model are 14  and the objective function was  0.8
 The root mean square of the residuals (RMSR) is  0.09 
 The df corrected root mean square of the residuals is  0.11 
 
-The harmonic n.obs is  65 with the empirical chi square  11.94  with prob <  0.61 
-The total n.obs was  102  with Likelihood Chi Square =  77.45  with prob <  8.4e-11 
+The harmonic n.obs is  65 with the empirical chi square  11.9  with prob <  0.61 
+The total n.obs was  102  with Likelihood Chi Square =  77.5  with prob <  8.4e-11 
 
 Tucker Lewis Index of factoring reliability =  0.656
 RMSEA index =  0.211  and the 90 % confidence intervals are  0.167 0.259

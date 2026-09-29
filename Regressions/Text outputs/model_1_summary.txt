@@ -4,23 +4,23 @@ lm(formula = institution_mean ~ german_citizen_binary * migration_background +
     age + gender_binary + uni_binary, data = ds)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--3.9507 -0.7678  0.1008  1.1304  2.2816 
+   Min     1Q Median     3Q    Max 
+-3.951 -0.768  0.101  1.130  2.282 
 
 Coefficients:
-                                                  Estimate Std. Error t value Pr(>|t|)   
-(Intercept)                                       2.105727   1.478629   1.424  0.15892   
-german_citizen_binaryYes                          3.931501   1.433835   2.742  0.00777 **
-migration_backgroundYes                           2.985214   1.440029   2.073  0.04191 * 
-age                                               0.008694   0.013724   0.634  0.52849   
-gender_binaryMale                                 0.344884   0.344254   1.002  0.31993   
-uni_binaryUni                                    -0.053995   0.428884  -0.126  0.90018   
-german_citizen_binaryYes:migration_backgroundYes -3.367481   1.500611  -2.244  0.02804 * 
+                                                 Estimate Std. Error t value Pr(>|t|)   
+(Intercept)                                       2.10573    1.47863    1.42   0.1589   
+german_citizen_binaryYes                          3.93150    1.43384    2.74   0.0078 **
+migration_backgroundYes                           2.98521    1.44003    2.07   0.0419 * 
+age                                               0.00869    0.01372    0.63   0.5285   
+gender_binaryMale                                 0.34488    0.34425    1.00   0.3199   
+uni_binaryUni                                    -0.05399    0.42888   -0.13   0.9002   
+german_citizen_binaryYes:migration_backgroundYes -3.36748    1.50061   -2.24   0.0280 * 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.397 on 69 degrees of freedom
+Residual standard error: 1.4 on 69 degrees of freedom
   (26 observations deleted due to missingness)
-Multiple R-squared:  0.1798,	Adjusted R-squared:  0.1085 
-F-statistic: 2.522 on 6 and 69 DF,  p-value: 0.0289
+Multiple R-squared:  0.18,	Adjusted R-squared:  0.109 
+F-statistic: 2.52 on 6 and 69 DF,  p-value: 0.0289
 

@@ -101,9 +101,14 @@ ds <- ds %>%
 
     # university education binary
     uni_binary = case_when(
-      de03 %in% c(8, 9, 11, 14, 13) ~ 1, # uni
-      # 13 = "other", coded as uni, since all (current) cases refer to "Diplom"; will be rechecked later
-      de03 %in% c(1, 2, 3, 5, 6) ~ 0, # non-uni
+      de03 %in% c(8, 9, 11, 14) ~ 1, # clearly university
+      de03 %in% c(1, 2, 3, 5, 6) ~ 0, # clearly non-university
+      de03 == 13 &
+        de03_13 %in%
+          c("Diplom", "Universität Diplom", "Maitrise de lettres modernes") ~ 1,
+      de03 == 13 & de03_13 == "Physiotherapeut" ~ 0, #as I was writing about data cleaning, I reviewed the responses again and...
+      # ...apparently, this is vocational education? as such, I just manually coded the responses as they are
+      #is this beautiful or long-lasting? no, but no one new answers our survey anyway, so this should work indefinitely
       TRUE ~ NA_real_
     ),
 
@@ -137,6 +142,12 @@ ds <- ds %>%
       TRUE ~ NA_real_
     )
   )
+
+# this was here to check that the uni free text responses recoding is working as intended
+#ds %>%
+#  filter(de03 == 13 | !is.na(de03_13)) %>%
+#  select(de03, de03_13, uni_binary) %>%
+#  print(n = Inf)
 
 #5. here we aggregate scales/indexes
 
