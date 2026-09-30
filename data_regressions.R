@@ -3,6 +3,7 @@ library(dplyr)
 library(broom)
 library(ggplot2)
 library(modelsummary)
+library(pandoc)
 
 # 1. read the cleaned data
 
@@ -12,7 +13,12 @@ ds <- read_csv("data_frost_cleaned.csv", show_col_types = FALSE)
 
 ds <- ds %>%
   mutate(
-    institution_mean = suppressWarnings(as.numeric(institution_mean)),
+    institution_mean_regressions = suppressWarnings(as.numeric(
+      institution_mean_regressions
+    )),
+    institution_mean_minimal = suppressWarnings(as.numeric(
+      institution_mean_minimal
+    )),
     pb_citizenship = suppressWarnings(as.numeric(pb_citizenship)), #see the data_cleaning.r script for reminders on what this is
     pb_belonging = suppressWarnings(as.numeric(pb_belonging)),
     discrim_mean = suppressWarnings(as.numeric(discrim_mean)),
@@ -60,7 +66,7 @@ dir.create("Regressions/Text outputs", recursive = TRUE, showWarnings = FALSE)
 
 #model 0: minimal baseline model + 3 basic controls (it's 0 because it's below our core theory level)
 m0 <- lm(
-  institution_mean ~ german_citizen_binary +
+  institution_mean_regressions ~ german_citizen_binary +
     migration_background +
     age + #controls
     gender_binary +
@@ -70,7 +76,7 @@ m0 <- lm(
 
 #model 1: baseline interaction model + 3 basic controls
 m1 <- lm(
-  institution_mean ~ german_citizen_binary *
+  institution_mean_regressions ~ german_citizen_binary *
     migration_background +
     age + #controls
     gender_binary +
@@ -79,8 +85,6 @@ m1 <- lm(
 )
 
 # model 1 with alternative trust: model 1 + institution_mean_minimal - institution_mean
-# aka our first robustness check model
-
 m1_alt_trust <- lm(
   institution_mean_minimal ~ german_citizen_binary *
     migration_background +
@@ -91,11 +95,9 @@ m1_alt_trust <- lm(
 )
 
 # model 1 with alternative migration: model 1 + migration_generation - migration_background
-# aka our first robustness check model
-
 m1_alt_migration <- lm(
-  institution_mean ~ german_citizen_binary *
-    migration_generation + #non-migrant vs 2nd gen vs 3rd gen
+  institution_mean_regressions ~ german_citizen_binary *
+    migration_generation + #non-migrant vs 2nd gen vs 1st gen
     age + #controls
     gender_binary +
     uni_binary,
@@ -104,7 +106,7 @@ m1_alt_migration <- lm(
 
 # model 1 with alternative residence: model 1 + length of residence in Germany
 m1_alt_residence <- lm(
-  institution_mean ~ german_citizen_binary *
+  institution_mean_regressions ~ german_citizen_binary *
     migration_background +
     age + #controls
     gender_binary +
@@ -115,7 +117,7 @@ m1_alt_residence <- lm(
 
 #model 2: model 1 + 3 sense of belonging items + 2 citizenship opinion items
 m2 <- lm(
-  institution_mean ~ german_citizen_binary *
+  institution_mean_regressions ~ german_citizen_binary *
     migration_background +
     age +
     gender_binary +
@@ -127,7 +129,7 @@ m2 <- lm(
 
 #model 3: model 1 + discrimination frequency
 m3 <- lm(
-  institution_mean ~ german_citizen_binary *
+  institution_mean_regressions ~ german_citizen_binary *
     migration_background +
     age +
     gender_binary +
@@ -138,7 +140,7 @@ m3 <- lm(
 
 #model 4: model 1 + 3 sense of belonging items + 2 citizenship opinion items + discrimination frequency
 m4 <- lm(
-  institution_mean ~ german_citizen_binary *
+  institution_mean_regressions ~ german_citizen_binary *
     migration_background +
     age +
     gender_binary +
@@ -164,8 +166,8 @@ m4_alt_trust <- lm(
 
 #model 4 alternative migration: model 4 + migration_generation - migration_background
 m4_alt_migration <- lm(
-  institution_mean ~ german_citizen_binary *
-    migration_generation + #non-migrant vs 2nd gen vs 3rd gen
+  institution_mean_regressions ~ german_citizen_binary *
+    migration_generation + #non-migrant vs 2nd gen vs 1st gen
     age +
     gender_binary +
     uni_binary +
@@ -174,7 +176,9 @@ m4_alt_migration <- lm(
     discrim_mean,
   data = ds
 )
-models <- list(
+
+# full model list
+models_all <- list(
   "Model 0: Cit + MigBG + controls" = m0,
   "Model 1: Cit×MigBG + controls" = m1,
   "Model 1: Alternative trust - minimal trust scale" = m1_alt_trust,
@@ -187,10 +191,77 @@ models <- list(
   "Model 4: Alternative migration - migration generation" = m4_alt_migration
 )
 
-# 5. HTML regression export
+# normal/main models only
+models_main <- list(
+  "Model 0: Cit + MigBG + controls" = m0,
+  "Model 1: Cit×MigBG + controls" = m1,
+  "Model 2: + Belonging (split)" = m2,
+  "Model 3: + Discrimination" = m3,
+  "Model 4: + Belonging (split) + Discrim" = m4
+)
+
+# alternative/robustness models only
+models_alternatives <- list(
+  "Model 1: Alternative trust - minimal trust scale" = m1_alt_trust,
+  "Model 1: Alternative migration - migration generation" = m1_alt_migration,
+  "Model 1: Alternative residence - length of residence in Germany" = m1_alt_residence,
+  "Model 4: Alternative trust - minimal trust scale" = m4_alt_trust,
+  "Model 4: Alternative migration - migration generation" = m4_alt_migration
+)
+
+# 5. regression table exports
+
+# all models
 modelsummary::modelsummary(
-  models,
-  output = "Regressions/Tables/regression_models.html",
+  models_all,
+  output = "Regressions/Tables/regression_models_all.html",
+  stars = TRUE,
+  statistic = "({std.error})",
+  fmt = 3,
+  gof_omit = "AIC|BIC|Log\\.Lik|RMSE"
+)
+
+modelsummary::modelsummary(
+  models_all,
+  output = "Regressions/Tables/regression_models_all.docx",
+  stars = TRUE,
+  statistic = "({std.error})",
+  fmt = 3,
+  gof_omit = "AIC|BIC|Log\\.Lik|RMSE"
+)
+
+# main models only
+modelsummary::modelsummary(
+  models_main,
+  output = "Regressions/Tables/regression_models_main.html",
+  stars = TRUE,
+  statistic = "({std.error})",
+  fmt = 3,
+  gof_omit = "AIC|BIC|Log\\.Lik|RMSE"
+)
+
+modelsummary::modelsummary(
+  models_main,
+  output = "Regressions/Tables/regression_models_main.docx",
+  stars = TRUE,
+  statistic = "({std.error})",
+  fmt = 3,
+  gof_omit = "AIC|BIC|Log\\.Lik|RMSE"
+)
+
+# alternative models only
+modelsummary::modelsummary(
+  models_alternatives,
+  output = "Regressions/Tables/regression_models_alternatives.html",
+  stars = TRUE,
+  statistic = "({std.error})",
+  fmt = 3,
+  gof_omit = "AIC|BIC|Log\\.Lik|RMSE"
+)
+
+modelsummary::modelsummary(
+  models_alternatives,
+  output = "Regressions/Tables/regression_models_alternatives.docx",
   stars = TRUE,
   statistic = "({std.error})",
   fmt = 3,
@@ -198,8 +269,8 @@ modelsummary::modelsummary(
 )
 
 # 6. coefficient export
-tidy_all <- bind_rows(lapply(names(models), function(nm) {
-  broom::tidy(models[[nm]], conf.int = TRUE) %>%
+tidy_all <- bind_rows(lapply(names(models_all), function(nm) {
+  broom::tidy(models_all[[nm]], conf.int = TRUE) %>%
     mutate(model = nm)
 })) %>%
   mutate(
@@ -256,8 +327,6 @@ save_txt_output(
   summary(m4_alt_migration),
   "Regressions/Text outputs/model_4_alt_migration_summary.txt"
 )
-
-# frankly, I really doubt we will make use of this, but who knows
 
 # 7. coefficient plot export
 
@@ -333,7 +402,11 @@ plot_model_coefs <- function(mod, model_name, keep_terms, file_out) {
   p <- ggplot(df, aes(x = estimate, y = reorder(term, estimate))) +
     geom_vline(xintercept = 0, linetype = "dashed", color = "grey50") +
     geom_point(size = 2) +
-    geom_errorbarh(aes(xmin = conf.low, xmax = conf.high), height = 0.2) +
+    geom_errorbar(
+      aes(xmin = conf.low, xmax = conf.high),
+      height = 0.2,
+      orientation = "y"
+    ) +
     labs(x = "Coefficient (95% CI)", y = NULL, title = model_name) +
     theme_minimal(base_size = 12)
 

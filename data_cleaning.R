@@ -162,10 +162,44 @@ ds <- ds %>%
     immigr_mean = safe_rowmean(pick(matches("^in07_"))), # immigration office
     citizens_mean = safe_rowmean(pick(matches("^in08_"))), # citizens' office
 
-    # final institutional trust average
+    # original institutional trust average including IN07_06
     institution_mean = safe_rowmean(pick(matches("^in0[1-8]_"))),
 
-    #minimal trust average, aka only the 1st "I trust X" items from each battery
+    # final institutional trust average excluding IN07_06 post alpha and EFA
+    institution_mean_regressions = safe_rowmean(
+      pick(any_of(c(
+        "in01_01",
+        "in01_02",
+        #
+        "in02_01",
+        "in02_02",
+        #
+        "in03_01",
+        "in03_02",
+        "in03_03",
+        #there is no IN04_... this is correct; just a SoSci quirk overlooked by us
+        "in05_01",
+        "in05_02",
+        "in05_03",
+        #
+        "in06_01",
+        "in06_02",
+        "in06_03",
+        "in06_04",
+        #
+        "in07_01",
+        "in07_02",
+        "in07_03",
+        "in07_05",
+        #
+        "in08_01",
+        "in08_02",
+        "in08_04",
+        "in08_05"
+      )))
+    ),
+
+    # minimal trust average, aka only the 1st "I trust X" items from each battery
     institution_mean_minimal = safe_rowmean(
       pick(any_of(c(
         "in01_01",

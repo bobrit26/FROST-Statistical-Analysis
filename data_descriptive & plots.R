@@ -5,6 +5,7 @@ library(ggplot2) # plots + ggsave
 library(tidyr) # pivot_longer
 library(knitr) # kable
 library(kableExtra) # styling + save_kable
+library(flextable) #for docx
 library(tibble) # rownames_to_column
 
 # 1. reading the data again
@@ -111,6 +112,23 @@ save_html_table <- function(tbl, html_file, caption_text) {
     ) %>%
     column_spec(1, bold = TRUE) %>%
     save_kable(file = html_file)
+}
+
+# small helper for exporting docx tables
+save_docx_table <- function(tbl, docx_file, caption_text) {
+  # to bolden both columns in the EFA trust tables
+  item_cols <- grep("^item", names(tbl))
+  if (length(item_cols) == 0) {
+    item_cols <- 1
+  } # fallback to column 1 if no "item" col exists
+
+  tbl %>%
+    flextable::flextable() %>%
+    flextable::set_caption(caption = caption_text) %>%
+    flextable::bold(j = item_cols, bold = TRUE) %>%
+    flextable::theme_zebra() %>%
+    flextable::autofit() %>%
+    flextable::save_as_docx(path = docx_file)
 }
 
 # helper for significance stars in tables / heatmaps
@@ -383,6 +401,12 @@ tab1 <- response_rates(ds_cleaned, table1_vars) %>%
 save_html_table(
   tbl = tab1,
   html_file = "Descriptives/Response rate/Tables/table1_response_rates.html",
+  caption_text = "Table 1. Response rates (key variables)"
+)
+
+save_docx_table(
+  tbl = tab1,
+  docx_file = "Descriptives/Response rate/Tables/table1_response_rates.docx",
   caption_text = "Table 1. Response rates (key variables)"
 )
 
@@ -1223,6 +1247,12 @@ save_html_table(
   caption_text = "Table 4. Cronbach's alpha summary"
 )
 
+save_docx_table(
+  tbl = alpha_summary,
+  docx_file = "Descriptives/Cronbach's alpha/Tables/alpha_summary.docx",
+  caption_text = "Table 4. Cronbach's alpha summary"
+)
+
 # also make visual versions as bar charts
 alpha_base <- ggplot(
   alpha_summary,
@@ -1299,11 +1329,24 @@ save_html_table(
   caption_text = "Table 5. EFA loadings for personal belonging items (1-factor)"
 )
 
+save_docx_table(
+  tbl = efa_pb_1_tbl,
+  docx_file = "Descriptives/EFA/Tables/efa_pb_1factor.docx",
+  caption_text = "Table 5. EFA loadings for personal belonging items (1-factor)"
+)
+
 save_html_table(
   tbl = efa_pb_2_tbl,
   html_file = "Descriptives/EFA/Tables/efa_pb_2factor.html",
   caption_text = "Table 6. EFA loadings for personal belonging items (2-factor)"
 )
+
+save_docx_table(
+  tbl = efa_pb_2_tbl,
+  docx_file = "Descriptives/EFA/Tables/efa_pb_2factor.docx",
+  caption_text = "Table 6. EFA loadings for personal belonging items (2-factor)"
+)
+
 
 # also EFA for trust items
 png(
@@ -1381,15 +1424,47 @@ efa_trust_2_tbl <- as.data.frame(unclass(efa_trust_2$loadings)) %>%
   rownames_to_column("item") %>%
   mutate(across(-item, ~ round(., 3)))
 
+# helper to split a long table into 2 side-by-side columns
+make_two_columns <- function(df) {
+  half <- ceiling(nrow(df) / 2)
+  part1 <- df[1:half, ]
+  part2 <- df[(half + 1):nrow(df), ]
+
+  # pad part2 with NAs if odd number of rows
+  if (nrow(part2) < nrow(part1)) {
+    part2[nrow(part1), ] <- NA
+  }
+
+  # Rrname second block columns to avoid collision and bind side-by-side
+  names(part2) <- paste0(names(part2), "_2")
+  bind_cols(part1, part2)
+}
+
+#fFormat 1-factor and 2-factor trust tables into 2 compact columns
+efa_trust_1_compact <- make_two_columns(efa_trust_1_tbl)
+efa_trust_2_compact <- make_two_columns(efa_trust_2_tbl)
+
 save_html_table(
-  tbl = efa_trust_1_tbl,
+  tbl = efa_trust_1_compact,
   html_file = "Descriptives/EFA/Tables/efa_trust_1factor.html",
   caption_text = "Table 7. EFA loadings for trust items (1-factor)"
 )
 
+save_docx_table(
+  tbl = efa_trust_1_compact,
+  docx_file = "Descriptives/EFA/Tables/efa_trust_1factor.docx",
+  caption_text = "Table 7. EFA loadings for trust items (1-factor)"
+)
+
 save_html_table(
-  tbl = efa_trust_2_tbl,
+  tbl = efa_trust_2_compact,
   html_file = "Descriptives/EFA/Tables/efa_trust_2factor.html",
+  caption_text = "Table 8. EFA loadings for trust items (2-factor)"
+)
+
+save_docx_table(
+  tbl = efa_trust_2_compact,
+  docx_file = "Descriptives/EFA/Tables/efa_trust_2factor.docx",
   caption_text = "Table 8. EFA loadings for trust items (2-factor)"
 )
 
@@ -1412,9 +1487,21 @@ save_html_table(
   caption_text = "Table 9. EFA loadings for minimal trust items (1-factor)"
 )
 
+save_docx_table(
+  tbl = efa_trust_minimal_1_tbl,
+  docx_file = "Descriptives/EFA/Tables/efa_trust_minimal_1factor.docx",
+  caption_text = "Table 9. EFA loadings for minimal trust items (1-factor)"
+)
+
 save_html_table(
   tbl = efa_trust_minimal_2_tbl,
   html_file = "Descriptives/EFA/Tables/efa_trust_minimal_2factor.html",
+  caption_text = "Table 10. EFA loadings for minimal trust items (2-factor)"
+)
+
+save_docx_table(
+  tbl = efa_trust_minimal_2_tbl,
+  docx_file = "Descriptives/EFA/Tables/efa_trust_minimal_2factor.docx",
   caption_text = "Table 10. EFA loadings for minimal trust items (2-factor)"
 )
 

@@ -1,30 +1,30 @@
 
 Call:
-lm(formula = institution_mean ~ german_citizen_binary * migration_background + 
-    age + gender_binary + uni_binary + length_residence_4cats, 
-    data = ds)
+lm(formula = institution_mean_regressions ~ german_citizen_binary * 
+    migration_background + age + gender_binary + uni_binary + 
+    length_residence_4cats, data = ds)
 
 Residuals:
    Min     1Q Median     3Q    Max 
--3.918 -0.884  0.099  1.153  2.326 
+-3.927 -0.845  0.066  1.112  2.294 
 
 Coefficients:
                                                  Estimate Std. Error t value Pr(>|t|)  
-(Intercept)                                       2.10278    1.49887    1.40    0.165  
-german_citizen_binaryYes                          3.91931    1.65385    2.37    0.021 *
-migration_backgroundYes                           3.11200    1.48675    2.09    0.040 *
-age                                               0.00734    0.01517    0.48    0.630  
-gender_binaryMale                                 0.35048    0.35507    0.99    0.327  
-uni_binaryUni                                    -0.01586    0.46941   -0.03    0.973  
-length_residence_4cats6-15 years                 -0.38020    0.66921   -0.57    0.572  
-length_residence_4cats16+ years                   0.32470    0.85849    0.38    0.706  
-length_residence_4catsSince birth                 0.01261    0.85185    0.01    0.988  
-german_citizen_binaryYes:migration_backgroundYes -3.46349    1.55770   -2.22    0.030 *
+(Intercept)                                       2.07611    1.52287    1.36    0.177  
+german_citizen_binaryYes                          3.99056    1.68033    2.37    0.020 *
+migration_backgroundYes                           3.11708    1.51055    2.06    0.043 *
+age                                               0.00707    0.01541    0.46    0.648  
+gender_binaryMale                                 0.33485    0.36075    0.93    0.357  
+uni_binaryUni                                     0.01775    0.47693    0.04    0.970  
+length_residence_4cats6-15 years                 -0.35897    0.67992   -0.53    0.599  
+length_residence_4cats16+ years                   0.32242    0.87223    0.37    0.713  
+length_residence_4catsSince birth                -0.01760    0.86549   -0.02    0.984  
+german_citizen_binaryYes:migration_backgroundYes -3.50962    1.58264   -2.22    0.030 *
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.41 on 66 degrees of freedom
+Residual standard error: 1.44 on 66 degrees of freedom
   (26 observations deleted due to missingness)
-Multiple R-squared:  0.197,	Adjusted R-squared:  0.0871 
-F-statistic: 1.79 on 9 and 66 DF,  p-value: 0.0858
+Multiple R-squared:  0.194,	Adjusted R-squared:  0.0836 
+F-statistic: 1.76 on 9 and 66 DF,  p-value: 0.0929
 

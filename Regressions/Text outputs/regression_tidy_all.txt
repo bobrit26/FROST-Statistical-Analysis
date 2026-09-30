@@ -1,17 +1,17 @@
 term	estimate	std.error	statistic	p.value	conf.low	conf.high	model
-(Intercept)	5.095	0.66	7.71856097644898	0	3.778	6.411	Model 0: Cit + MigBG + controls
-german_citizen_binaryYes	0.85	0.425	2.00086481754837	0.049	0.003	1.698	Model 0: Cit + MigBG + controls
-migration_backgroundYes	-0.124	0.403	-0.307715067030861	0.759	-0.929	0.68	Model 0: Cit + MigBG + controls
-age	0.01	0.014	0.702337514711275	0.485	-0.018	0.038	Model 0: Cit + MigBG + controls
-gender_binaryMale	0.421	0.352	1.19629769645337	0.236	-0.281	1.124	Model 0: Cit + MigBG + controls
-uni_binaryUni	-0.154	0.439	-0.351982110424132	0.726	-1.029	0.72	Model 0: Cit + MigBG + controls
-(Intercept)	2.106	1.479	1.42410744081115	0.159	-0.844	5.056	Model 1: Cit×MigBG + controls
-german_citizen_binaryYes	3.932	1.434	2.74194722553614	0.008	1.071	6.792	Model 1: Cit×MigBG + controls
-migration_backgroundYes	2.985	1.44	2.07302388299978	0.042	0.112	5.858	Model 1: Cit×MigBG + controls
-age	0.009	0.014	0.633514924296602	0.528	-0.019	0.036	Model 1: Cit×MigBG + controls
-gender_binaryMale	0.345	0.344	1.00182990822497	0.32	-0.342	1.032	Model 1: Cit×MigBG + controls
-uni_binaryUni	-0.054	0.429	-0.125895459274116	0.9	-0.91	0.802	Model 1: Cit×MigBG + controls
-german_citizen_binaryYes:migration_backgroundYes	-3.367	1.501	-2.24407279009569	0.028	-6.361	-0.374	Model 1: Cit×MigBG + controls
+(Intercept)	5.108	0.67	7.62509262960372	0	3.772	6.444	Model 0: Cit + MigBG + controls
+german_citizen_binaryYes	0.857	0.431	1.98597347548226	0.051	-0.004	1.717	Model 0: Cit + MigBG + controls
+migration_backgroundYes	-0.149	0.409	-0.363142944763966	0.718	-0.965	0.668	Model 0: Cit + MigBG + controls
+age	0.01	0.014	0.677451728119515	0.5	-0.019	0.038	Model 0: Cit + MigBG + controls
+gender_binaryMale	0.412	0.358	1.15240741207076	0.253	-0.301	1.125	Model 0: Cit + MigBG + controls
+uni_binaryUni	-0.129	0.445	-0.290497111698758	0.772	-1.017	0.759	Model 0: Cit + MigBG + controls
+(Intercept)	2.085	1.501	1.38940898583852	0.169	-0.909	5.079	Model 1: Cit×MigBG + controls
+german_citizen_binaryYes	3.972	1.455	2.7289418609617	0.008	1.068	6.875	Model 1: Cit×MigBG + controls
+migration_backgroundYes	2.995	1.462	2.04904925446836	0.044	0.079	5.911	Model 1: Cit×MigBG + controls
+age	0.008	0.014	0.608102353805129	0.545	-0.019	0.036	Model 1: Cit×MigBG + controls
+gender_binaryMale	0.335	0.349	0.957473048100212	0.342	-0.363	1.032	Model 1: Cit×MigBG + controls
+uni_binaryUni	-0.028	0.435	-0.063847620300435	0.949	-0.896	0.841	Model 1: Cit×MigBG + controls
+german_citizen_binaryYes:migration_backgroundYes	-3.405	1.523	-2.23526471351029	0.029	-6.443	-0.366	Model 1: Cit×MigBG + controls
 (Intercept)	1.917	1.532	1.25098029646319	0.215	-1.14	4.973	Model 1: Alternative trust - minimal trust scale
 german_citizen_binaryYes	4.089	1.486	2.75251944866221	0.008	1.126	7.053	Model 1: Alternative trust - minimal trust scale
 migration_backgroundYes	3.123	1.492	2.09283703295059	0.04	0.146	6.099	Model 1: Alternative trust - minimal trust scale
@@ -19,52 +19,52 @@ age	0.009	0.014	0.653681418779152	0.515	-0.019	0.038	Model 1: Alternative trust 
 gender_binaryMale	0.39	0.357	1.09391284021353	0.278	-0.321	1.102	Model 1: Alternative trust - minimal trust scale
 uni_binaryUni	0.008	0.444	0.0187876095676442	0.985	-0.878	0.895	Model 1: Alternative trust - minimal trust scale
 german_citizen_binaryYes:migration_backgroundYes	-3.665	1.555	-2.357359822671	0.021	-6.767	-0.564	Model 1: Alternative trust - minimal trust scale
-(Intercept)	2.091	1.491	1.40228667544696	0.165	-0.885	5.067	Model 1: Alternative migration - migration generation
-german_citizen_binaryYes	3.951	1.444	2.73551636420115	0.008	1.068	6.833	Model 1: Alternative migration - migration generation
-migration_generation2nd gen	1.676	2.001	0.837208833202628	0.405	-2.319	5.67	Model 1: Alternative migration - migration generation
-migration_generation1st gen	3.063	1.452	2.10915625595517	0.039	0.164	5.962	Model 1: Alternative migration - migration generation
-age	0.009	0.014	0.657096793960285	0.513	-0.019	0.037	Model 1: Alternative migration - migration generation
-gender_binaryMale	0.298	0.35	0.852247685493978	0.397	-0.4	0.996	Model 1: Alternative migration - migration generation
-uni_binaryUni	-0.052	0.433	-0.119303286110283	0.905	-0.915	0.812	Model 1: Alternative migration - migration generation
-german_citizen_binaryYes:migration_generation2nd gen	-2.135	2.051	-1.0408470334174	0.302	-6.229	1.959	Model 1: Alternative migration - migration generation
-german_citizen_binaryYes:migration_generation1st gen	-3.29	1.587	-2.07320744474585	0.042	-6.457	-0.123	Model 1: Alternative migration - migration generation
-(Intercept)	2.103	1.499	1.40291097106199	0.165	-0.89	5.095	Model 1: Alternative residence - length of residence in Germany
-german_citizen_binaryYes	3.919	1.654	2.36980900977484	0.021	0.617	7.221	Model 1: Alternative residence - length of residence in Germany
-migration_backgroundYes	3.112	1.487	2.09315456866292	0.04	0.144	6.08	Model 1: Alternative residence - length of residence in Germany
-age	0.007	0.015	0.483962807181099	0.63	-0.023	0.038	Model 1: Alternative residence - length of residence in Germany
-gender_binaryMale	0.35	0.355	0.987087132405299	0.327	-0.358	1.059	Model 1: Alternative residence - length of residence in Germany
-uni_binaryUni	-0.016	0.469	-0.0337862256320337	0.973	-0.953	0.921	Model 1: Alternative residence - length of residence in Germany
-length_residence_4cats6-15 years	-0.38	0.669	-0.56813551950933	0.572	-1.716	0.956	Model 1: Alternative residence - length of residence in Germany
-length_residence_4cats16+ years	0.325	0.858	0.378224022565296	0.706	-1.389	2.039	Model 1: Alternative residence - length of residence in Germany
-length_residence_4catsSince birth	0.013	0.852	0.0147999312537837	0.988	-1.688	1.713	Model 1: Alternative residence - length of residence in Germany
-german_citizen_binaryYes:migration_backgroundYes	-3.463	1.558	-2.22345633110557	0.03	-6.574	-0.353	Model 1: Alternative residence - length of residence in Germany
-(Intercept)	1.968	1.179	1.66844180330419	0.101	-0.393	4.329	Model 2: + Belonging (split)
-german_citizen_binaryYes	1.606	1.173	1.36999506560721	0.176	-0.741	3.953	Model 2: + Belonging (split)
-migration_backgroundYes	1.004	1.149	0.873925795757403	0.386	-1.296	3.304	Model 2: + Belonging (split)
-age	0.008	0.012	0.717774439740488	0.476	-0.015	0.031	Model 2: + Belonging (split)
-gender_binaryMale	-0.037	0.287	-0.130249049624386	0.897	-0.612	0.538	Model 2: + Belonging (split)
-uni_binaryUni	-0.077	0.375	-0.20508112253357	0.838	-0.827	0.673	Model 2: + Belonging (split)
-pb_citizenship	-0.222	0.087	-2.54318860045504	0.014	-0.398	-0.047	Model 2: + Belonging (split)
-pb_belonging	0.586	0.085	6.90351423069803	0	0.416	0.756	Model 2: + Belonging (split)
-german_citizen_binaryYes:migration_backgroundYes	-1.488	1.193	-1.24752093435511	0.217	-3.876	0.9	Model 2: + Belonging (split)
-(Intercept)	2.898	1.458	1.98829990751559	0.051	-0.015	5.812	Model 3: + Discrimination
-german_citizen_binaryYes	4.136	1.378	3.00111807396105	0.004	1.382	6.891	Model 3: + Discrimination
-migration_backgroundYes	3.26	1.386	2.35104770313283	0.022	0.489	6.03	Model 3: + Discrimination
-age	0.016	0.014	1.11033545559135	0.271	-0.013	0.044	Model 3: + Discrimination
-gender_binaryMale	0.168	0.343	0.488933108346882	0.627	-0.518	0.854	Model 3: + Discrimination
-uni_binaryUni	-0.328	0.447	-0.733109451235753	0.466	-1.221	0.566	Model 3: + Discrimination
-discrim_mean	-0.528	0.221	-2.38945726486464	0.02	-0.969	-0.086	Model 3: + Discrimination
-german_citizen_binaryYes:migration_backgroundYes	-3.779	1.447	-2.61173911799921	0.011	-6.671	-0.888	Model 3: + Discrimination
-(Intercept)	2.301	1.236	1.86199848179196	0.068	-0.174	4.775	Model 4: + Belonging (split) + Discrim
-german_citizen_binaryYes	1.792	1.191	1.50399588839378	0.138	-0.594	4.178	Model 4: + Belonging (split) + Discrim
-migration_backgroundYes	1.157	1.163	0.995314288034046	0.324	-1.171	3.485	Model 4: + Belonging (split) + Discrim
-age	0.01	0.012	0.824985117849881	0.413	-0.014	0.033	Model 4: + Belonging (split) + Discrim
-gender_binaryMale	-0.044	0.288	-0.152794808687973	0.879	-0.62	0.532	Model 4: + Belonging (split) + Discrim
-uni_binaryUni	-0.156	0.385	-0.405300859735142	0.687	-0.927	0.615	Model 4: + Belonging (split) + Discrim
-pb_citizenship	-0.224	0.088	-2.55739077103752	0.013	-0.4	-0.049	Model 4: + Belonging (split) + Discrim
-pb_belonging	0.563	0.089	6.35955577281442	0	0.386	0.74	Model 4: + Belonging (split) + Discrim
-discrim_mean	-0.176	0.192	-0.917160337336584	0.363	-0.562	0.209	Model 4: + Belonging (split) + Discrim
-german_citizen_binaryYes:migration_backgroundYes	-1.654	1.208	-1.36937477462612	0.176	-4.074	0.765	Model 4: + Belonging (split) + Discrim
+(Intercept)	2.076	1.513	1.37204007188745	0.175	-0.944	5.096	Model 1: Alternative migration - migration generation
+german_citizen_binaryYes	3.992	1.465	2.72405208061162	0.008	1.067	6.917	Model 1: Alternative migration - migration generation
+migration_generation2nd gen	1.681	2.031	0.827706954761381	0.411	-2.373	5.735	Model 1: Alternative migration - migration generation
+migration_generation1st gen	3.075	1.474	2.08670634562256	0.041	0.134	6.017	Model 1: Alternative migration - migration generation
+age	0.009	0.014	0.622238366309909	0.536	-0.019	0.037	Model 1: Alternative migration - migration generation
+gender_binaryMale	0.286	0.355	0.804962489020765	0.424	-0.423	0.994	Model 1: Alternative migration - migration generation
+uni_binaryUni	-0.027	0.439	-0.0622333129512486	0.951	-0.904	0.849	Model 1: Alternative migration - migration generation
+german_citizen_binaryYes:migration_generation2nd gen	-2.185	2.081	-1.04984026692636	0.298	-6.339	1.969	Model 1: Alternative migration - migration generation
+german_citizen_binaryYes:migration_generation1st gen	-3.286	1.61	-2.04092468487493	0.045	-6.5	-0.072	Model 1: Alternative migration - migration generation
+(Intercept)	2.076	1.523	1.3632938797095	0.177	-0.964	5.117	Model 1: Alternative residence - length of residence in Germany
+german_citizen_binaryYes	3.991	1.68	2.37486667857088	0.02	0.636	7.345	Model 1: Alternative residence - length of residence in Germany
+migration_backgroundYes	3.117	1.511	2.06354092758158	0.043	0.101	6.133	Model 1: Alternative residence - length of residence in Germany
+age	0.007	0.015	0.459020210354652	0.648	-0.024	0.038	Model 1: Alternative residence - length of residence in Germany
+gender_binaryMale	0.335	0.361	0.928215376705322	0.357	-0.385	1.055	Model 1: Alternative residence - length of residence in Germany
+uni_binaryUni	0.018	0.477	0.0372083213287311	0.97	-0.934	0.97	Model 1: Alternative residence - length of residence in Germany
+length_residence_4cats6-15 years	-0.359	0.68	-0.527958159233018	0.599	-1.716	0.999	Model 1: Alternative residence - length of residence in Germany
+length_residence_4cats16+ years	0.322	0.872	0.369644753957747	0.713	-1.419	2.064	Model 1: Alternative residence - length of residence in Germany
+length_residence_4catsSince birth	-0.018	0.865	-0.0203302502345258	0.984	-1.746	1.71	Model 1: Alternative residence - length of residence in Germany
+german_citizen_binaryYes:migration_backgroundYes	-3.51	1.583	-2.21756748381745	0.03	-6.669	-0.35	Model 1: Alternative residence - length of residence in Germany
+(Intercept)	1.97	1.198	1.64388449952225	0.106	-0.429	4.368	Model 2: + Belonging (split)
+german_citizen_binaryYes	1.626	1.191	1.36513373824987	0.177	-0.758	4.01	Model 2: + Belonging (split)
+migration_backgroundYes	0.983	1.167	0.84176662751438	0.403	-1.354	3.319	Model 2: + Belonging (split)
+age	0.008	0.012	0.672583466053283	0.504	-0.016	0.031	Model 2: + Belonging (split)
+gender_binaryMale	-0.054	0.292	-0.186504694433966	0.853	-0.638	0.53	Model 2: + Belonging (split)
+uni_binaryUni	-0.046	0.38	-0.120539819720697	0.904	-0.807	0.716	Model 2: + Belonging (split)
+pb_citizenship	-0.232	0.089	-2.61515056942882	0.011	-0.41	-0.055	Model 2: + Belonging (split)
+pb_belonging	0.597	0.086	6.92515227157099	0	0.424	0.77	Model 2: + Belonging (split)
+german_citizen_binaryYes:migration_backgroundYes	-1.495	1.212	-1.2338905878574	0.222	-3.921	0.93	Model 2: + Belonging (split)
+(Intercept)	2.874	1.485	1.93568974538277	0.057	-0.093	5.841	Model 3: + Discrimination
+german_citizen_binaryYes	4.177	1.404	2.9757804881041	0.004	1.372	6.982	Model 3: + Discrimination
+migration_backgroundYes	3.269	1.412	2.31483789252664	0.024	0.447	6.09	Model 3: + Discrimination
+age	0.015	0.014	1.06503260332496	0.291	-0.014	0.044	Model 3: + Discrimination
+gender_binaryMale	0.158	0.35	0.453264384616736	0.652	-0.54	0.857	Model 3: + Discrimination
+uni_binaryUni	-0.297	0.455	-0.652232958296078	0.517	-1.207	0.613	Model 3: + Discrimination
+discrim_mean	-0.525	0.225	-2.33522821485907	0.023	-0.975	-0.076	Model 3: + Discrimination
+german_citizen_binaryYes:migration_backgroundYes	-3.814	1.474	-2.58798826301618	0.012	-6.76	-0.869	Model 3: + Discrimination
+(Intercept)	2.286	1.256	1.81940072821906	0.074	-0.23	4.801	Model 4: + Belonging (split) + Discrim
+german_citizen_binaryYes	1.802	1.211	1.48772909048094	0.142	-0.624	4.228	Model 4: + Belonging (split) + Discrim
+migration_backgroundYes	1.128	1.182	0.954108606867098	0.344	-1.239	3.495	Model 4: + Belonging (split) + Discrim
+age	0.009	0.012	0.772110804491253	0.443	-0.015	0.033	Model 4: + Belonging (split) + Discrim
+gender_binaryMale	-0.061	0.293	-0.207287174464423	0.837	-0.646	0.525	Model 4: + Belonging (split) + Discrim
+uni_binaryUni	-0.121	0.391	-0.309392924479303	0.758	-0.905	0.663	Model 4: + Belonging (split) + Discrim
+pb_citizenship	-0.234	0.089	-2.6256288204336	0.011	-0.412	-0.056	Model 4: + Belonging (split) + Discrim
+pb_belonging	0.575	0.09	6.39107844261556	0	0.395	0.756	Model 4: + Belonging (split) + Discrim
+discrim_mean	-0.168	0.196	-0.856861246890512	0.395	-0.559	0.224	Model 4: + Belonging (split) + Discrim
+german_citizen_binaryYes:migration_backgroundYes	-1.653	1.229	-1.34573848719657	0.184	-4.113	0.807	Model 4: + Belonging (split) + Discrim
 (Intercept)	2.241	1.332	1.6828068885539	0.098	-0.426	4.909	Model 4: Alternative trust - minimal trust scale
 german_citizen_binaryYes	1.974	1.284	1.53727003711408	0.13	-0.597	4.546	Model 4: Alternative trust - minimal trust scale
 migration_backgroundYes	1.27	1.253	1.01314696740922	0.315	-1.24	3.78	Model 4: Alternative trust - minimal trust scale
@@ -75,15 +75,15 @@ pb_citizenship	-0.266	0.094	-2.81706003765076	0.007	-0.455	-0.077	Model 4: Alter
 pb_belonging	0.574	0.095	6.01791317622102	0	0.383	0.766	Model 4: Alternative trust - minimal trust scale
 discrim_mean	-0.131	0.207	-0.633803732322238	0.529	-0.547	0.284	Model 4: Alternative trust - minimal trust scale
 german_citizen_binaryYes:migration_backgroundYes	-1.934	1.302	-1.48456700811388	0.143	-4.542	0.675	Model 4: Alternative trust - minimal trust scale
-(Intercept)	2.287	1.264	1.81009302162349	0.076	-0.245	4.819	Model 4: Alternative migration - migration generation
-german_citizen_binaryYes	1.766	1.214	1.45493017962233	0.151	-0.667	4.199	Model 4: Alternative migration - migration generation
-migration_generation2nd gen	1.25	1.6	0.781203957645476	0.438	-1.957	4.458	Model 4: Alternative migration - migration generation
-migration_generation1st gen	1.136	1.189	0.955754299863895	0.343	-1.246	3.519	Model 4: Alternative migration - migration generation
-age	0.009	0.012	0.75076755545644	0.456	-0.015	0.033	Model 4: Alternative migration - migration generation
-gender_binaryMale	-0.044	0.294	-0.148233383516961	0.883	-0.632	0.545	Model 4: Alternative migration - migration generation
-uni_binaryUni	-0.161	0.392	-0.409906592513839	0.683	-0.945	0.624	Model 4: Alternative migration - migration generation
-pb_citizenship	-0.221	0.096	-2.31229321327734	0.025	-0.412	-0.029	Model 4: Alternative migration - migration generation
-pb_belonging	0.566	0.093	6.10611982676931	0	0.38	0.751	Model 4: Alternative migration - migration generation
-discrim_mean	-0.165	0.198	-0.833105391262197	0.408	-0.563	0.232	Model 4: Alternative migration - migration generation
-german_citizen_binaryYes:migration_generation2nd gen	-1.806	1.629	-1.10909173858992	0.272	-5.07	1.458	Model 4: Alternative migration - migration generation
-german_citizen_binaryYes:migration_generation1st gen	-1.506	1.302	-1.15697097715517	0.252	-4.115	1.103	Model 4: Alternative migration - migration generation
+(Intercept)	2.269	1.284	1.7673266225302	0.083	-0.304	4.842	Model 4: Alternative migration - migration generation
+german_citizen_binaryYes	1.768	1.233	1.43356796205603	0.157	-0.704	4.24	Model 4: Alternative migration - migration generation
+migration_generation2nd gen	1.259	1.626	0.774445024975414	0.442	-1.999	4.518	Model 4: Alternative migration - migration generation
+migration_generation1st gen	1.099	1.208	0.910115737018785	0.367	-1.321	3.52	Model 4: Alternative migration - migration generation
+age	0.008	0.012	0.684189081168218	0.497	-0.016	0.033	Model 4: Alternative migration - migration generation
+gender_binaryMale	-0.06	0.298	-0.200693314229812	0.842	-0.658	0.538	Model 4: Alternative migration - migration generation
+uni_binaryUni	-0.127	0.398	-0.319307464462072	0.751	-0.924	0.67	Model 4: Alternative migration - migration generation
+pb_citizenship	-0.23	0.097	-2.36948861119274	0.021	-0.425	-0.035	Model 4: Alternative migration - migration generation
+pb_belonging	0.579	0.094	6.15087685233229	0	0.39	0.768	Model 4: Alternative migration - migration generation
+discrim_mean	-0.153	0.202	-0.758581340878556	0.451	-0.557	0.251	Model 4: Alternative migration - migration generation
+german_citizen_binaryYes:migration_generation2nd gen	-1.862	1.655	-1.12520663895007	0.265	-5.178	1.454	Model 4: Alternative migration - migration generation
+german_citizen_binaryYes:migration_generation1st gen	-1.457	1.323	-1.10143864997385	0.276	-4.108	1.194	Model 4: Alternative migration - migration generation
