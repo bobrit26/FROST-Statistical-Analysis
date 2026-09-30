@@ -5,23 +5,23 @@ lm(formula = institution_mean_regressions ~ german_citizen_binary *
     data = ds)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--3.966 -0.769  0.066  1.148  2.291 
+    Min      1Q  Median      3Q     Max 
+-3.9656 -0.7691  0.0660  1.1480  2.2908 
 
 Coefficients:
-                                                 Estimate Std. Error t value Pr(>|t|)   
-(Intercept)                                       2.08533    1.50088    1.39   0.1692   
-german_citizen_binaryYes                          3.97172    1.45541    2.73   0.0081 **
-migration_backgroundYes                           2.99508    1.46169    2.05   0.0443 * 
-age                                               0.00847    0.01393    0.61   0.5451   
-gender_binaryMale                                 0.33457    0.34943    0.96   0.3417   
-uni_binaryUni                                    -0.02780    0.43534   -0.06   0.9493   
-german_citizen_binaryYes:migration_backgroundYes -3.40473    1.52319   -2.24   0.0286 * 
+                                                  Estimate Std. Error t value Pr(>|t|)   
+(Intercept)                                       2.085330   1.500876   1.389  0.16918   
+german_citizen_binaryYes                          3.971724   1.455408   2.729  0.00805 **
+migration_backgroundYes                           2.995084   1.461695   2.049  0.04426 * 
+age                                               0.008471   0.013930   0.608  0.54512   
+gender_binaryMale                                 0.334573   0.349434   0.957  0.34167   
+uni_binaryUni                                    -0.027795   0.435337  -0.064  0.94928   
+german_citizen_binaryYes:migration_backgroundYes -3.404730   1.523189  -2.235  0.02864 * 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.42 on 69 degrees of freedom
+Residual standard error: 1.418 on 69 degrees of freedom
   (26 observations deleted due to missingness)
-Multiple R-squared:  0.178,	Adjusted R-squared:  0.107 
-F-statistic:  2.5 on 6 and 69 DF,  p-value: 0.0304
+Multiple R-squared:  0.1783,	Adjusted R-squared:  0.1068 
+F-statistic: 2.495 on 6 and 69 DF,  p-value: 0.0304
 

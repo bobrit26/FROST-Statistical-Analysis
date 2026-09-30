@@ -33,7 +33,7 @@ The root mean square of the residuals (RMSR) is  0.06
 The df corrected root mean square of the residuals is  0.1 
 
 The harmonic n.obs is  65 with the empirical chi square  5  with prob <  0.76 
-The total n.obs was  102  with Likelihood Chi Square =  28  with prob <  0.00047 
+The total n.obs was  102  with Likelihood Chi Square =  28.02  with prob <  0.00047 
 
 Tucker Lewis Index of factoring reliability =  0.809
 RMSEA index =  0.156  and the 90 % confidence intervals are  0.097 0.223

@@ -5,24 +5,24 @@ lm(formula = institution_mean_regressions ~ german_citizen_binary *
     discrim_mean, data = ds)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--3.239 -0.882  0.149  0.891  2.173 
+    Min      1Q  Median      3Q     Max 
+-3.2386 -0.8821  0.1493  0.8906  2.1732 
 
 Coefficients:
                                                  Estimate Std. Error t value Pr(>|t|)   
-(Intercept)                                        2.8739     1.4847    1.94   0.0574 . 
-german_citizen_binaryYes                           4.1772     1.4037    2.98   0.0041 **
-migration_backgroundYes                            3.2686     1.4120    2.31   0.0239 * 
-age                                                0.0154     0.0145    1.07   0.2909   
-gender_binaryMale                                  0.1584     0.3496    0.45   0.6519   
-uni_binaryUni                                     -0.2970     0.4554   -0.65   0.5166   
-discrim_mean                                      -0.5253     0.2249   -2.34   0.0227 * 
-german_citizen_binaryYes:migration_backgroundYes  -3.8143     1.4738   -2.59   0.0120 * 
+(Intercept)                                       2.87391    1.48470   1.936  0.05740 . 
+german_citizen_binaryYes                          4.17723    1.40374   2.976  0.00414 **
+migration_backgroundYes                           3.26862    1.41203   2.315  0.02389 * 
+age                                               0.01543    0.01449   1.065  0.29093   
+gender_binaryMale                                 0.15844    0.34956   0.453  0.65192   
+uni_binaryUni                                    -0.29705    0.45543  -0.652  0.51662   
+discrim_mean                                     -0.52527    0.22493  -2.335  0.02273 * 
+german_citizen_binaryYes:migration_backgroundYes -3.81428    1.47384  -2.588  0.01197 * 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.36 on 63 degrees of freedom
+Residual standard error: 1.364 on 63 degrees of freedom
   (31 observations deleted due to missingness)
-Multiple R-squared:  0.244,	Adjusted R-squared:  0.16 
-F-statistic:  2.9 on 7 and 63 DF,  p-value: 0.0107
+Multiple R-squared:  0.2439,	Adjusted R-squared:  0.1599 
+F-statistic: 2.904 on 7 and 63 DF,  p-value: 0.01072
 

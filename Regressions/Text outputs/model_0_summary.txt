@@ -5,22 +5,22 @@ lm(formula = institution_mean_regressions ~ german_citizen_binary +
     data = ds)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--3.900 -0.832  0.168  1.075  2.371 
+    Min      1Q  Median      3Q     Max 
+-3.8997 -0.8324  0.1679  1.0746  2.3709 
 
 Coefficients:
-                         Estimate Std. Error t value Pr(>|t|)    
-(Intercept)                5.1076     0.6698    7.63  8.9e-11 ***
-german_citizen_binaryYes   0.8566     0.4313    1.99    0.051 .  
-migration_backgroundYes   -0.1487     0.4093   -0.36    0.718    
-age                        0.0097     0.0143    0.68    0.500    
-gender_binaryMale          0.4120     0.3575    1.15    0.253    
-uni_binaryUni             -0.1293     0.4451   -0.29    0.772    
+                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)               5.107627   0.669845   7.625 8.95e-11 ***
+german_citizen_binaryYes  0.856571   0.431310   1.986    0.051 .  
+migration_backgroundYes  -0.148652   0.409347  -0.363    0.718    
+age                       0.009695   0.014311   0.677    0.500    
+gender_binaryMale         0.411987   0.357501   1.152    0.253    
+uni_binaryUni            -0.129314   0.445149  -0.290    0.772    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.46 on 70 degrees of freedom
+Residual standard error: 1.458 on 70 degrees of freedom
   (26 observations deleted due to missingness)
-Multiple R-squared:  0.119,	Adjusted R-squared:  0.0558 
-F-statistic: 1.89 on 5 and 70 DF,  p-value: 0.108
+Multiple R-squared:  0.1188,	Adjusted R-squared:  0.05585 
+F-statistic: 1.887 on 5 and 70 DF,  p-value: 0.1075
 

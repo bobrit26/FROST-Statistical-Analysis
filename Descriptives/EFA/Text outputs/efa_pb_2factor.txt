@@ -23,7 +23,7 @@ MR2 0.4 1.0
 Mean item complexity =  1.3
 Test of the hypothesis that 2 factors are sufficient.
 
-df null model =  10  with the objective function =  1.29 with Chi Square =  127
+df null model =  10  with the objective function =  1.29 with Chi Square =  126.58
 df of  the model are 1  and the objective function was  0.03 
 
 The root mean square of the residuals (RMSR) is  0.03 

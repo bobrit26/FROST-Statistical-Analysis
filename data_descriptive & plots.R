@@ -410,6 +410,48 @@ save_docx_table(
   caption_text = "Table 1. Response rates (key variables)"
 )
 
+# last minute crosstab - citizenship x migration background
+
+# first, make sure the variables are readable as factors
+ds_cleaned <- ds_cleaned %>%
+  mutate(
+    german_citizen_binary = factor(
+      german_citizen_binary,
+      levels = c(0, 1),
+      labels = c("No", "Yes")
+    ),
+    migration_background = factor(
+      migration_background,
+      levels = c(0, 1),
+      labels = c("No", "Yes")
+    )
+  )
+
+# simple 2x2 count table
+cit_mig_crosstab <- table(
+  Citizenship = ds_cleaned$german_citizen_binary,
+  Migration_background = ds_cleaned$migration_background,
+  useNA = "no"
+)
+
+cit_mig_crosstab_df <- as.data.frame.matrix(cit_mig_crosstab) %>%
+  tibble::rownames_to_column("Citizenship")
+
+# save as csv
+write_csv(
+  cit_mig_crosstab_df,
+  "Descriptives/Correlations/Tables/crosstab_citizenship_migration_background.csv"
+)
+
+# save as txt
+write.table(
+  cit_mig_crosstab_df,
+  file = "Descriptives/Correlations/Text outputs/crosstab_citizenship_migration_background.txt",
+  sep = "\t",
+  row.names = FALSE,
+  quote = FALSE
+)
+
 # 6. selected correlations - small set for table 2
 
 # table 2 now stays smaller and cleaner

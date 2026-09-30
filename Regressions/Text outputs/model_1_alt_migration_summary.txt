@@ -5,25 +5,25 @@ lm(formula = institution_mean_regressions ~ german_citizen_binary *
     data = ds)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--3.984 -0.677  0.070  1.118  2.366 
+    Min      1Q  Median      3Q     Max 
+-3.9841 -0.6774  0.0697  1.1181  2.3660 
 
 Coefficients:
-                                                     Estimate Std. Error t value Pr(>|t|)   
-(Intercept)                                           2.07597    1.51305    1.37   0.1746   
-german_citizen_binaryYes                              3.99207    1.46549    2.72   0.0082 **
-migration_generation2nd gen                           1.68094    2.03084    0.83   0.4108   
-migration_generation1st gen                           3.07531    1.47376    2.09   0.0407 * 
-age                                                   0.00881    0.01416    0.62   0.5359   
-gender_binaryMale                                     0.28576    0.35500    0.80   0.4237   
-uni_binaryUni                                        -0.02732    0.43903   -0.06   0.9506   
-german_citizen_binaryYes:migration_generation2nd gen -2.18504    2.08131   -1.05   0.2976   
-german_citizen_binaryYes:migration_generation1st gen -3.28637    1.61024   -2.04   0.0452 * 
+                                                      Estimate Std. Error t value Pr(>|t|)   
+(Intercept)                                           2.075966   1.513050   1.372  0.17463   
+german_citizen_binaryYes                              3.992066   1.465488   2.724  0.00822 **
+migration_generation2nd gen                           1.680938   2.030837   0.828  0.41077   
+migration_generation1st gen                           3.075312   1.473764   2.087  0.04072 * 
+age                                                   0.008813   0.014163   0.622  0.53590   
+gender_binaryMale                                     0.285759   0.354996   0.805  0.42369   
+uni_binaryUni                                        -0.027323   0.439034  -0.062  0.95056   
+german_citizen_binaryYes:migration_generation2nd gen -2.185041   2.081308  -1.050  0.29756   
+german_citizen_binaryYes:migration_generation1st gen -3.286373   1.610237  -2.041  0.04520 * 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.43 on 67 degrees of freedom
+Residual standard error: 1.428 on 67 degrees of freedom
   (26 observations deleted due to missingness)
-Multiple R-squared:  0.191,	Adjusted R-squared:  0.0946 
-F-statistic: 1.98 on 8 and 67 DF,  p-value: 0.0625
+Multiple R-squared:  0.1912,	Adjusted R-squared:  0.0946 
+F-statistic:  1.98 on 8 and 67 DF,  p-value: 0.06247
 

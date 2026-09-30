@@ -33,18 +33,18 @@ Proportion Var  0.44
 Mean item complexity =  1
 Test of the hypothesis that 1 factor is sufficient.
 
-df null model =  253  with the objective function =  90.1 with Chi Square =  8336
-df of  the model are 230  and the objective function was  79.1 
+df null model =  253  with the objective function =  90.12 with Chi Square =  8335.94
+df of  the model are 230  and the objective function was  79.07 
 
 The root mean square of the residuals (RMSR) is  0.23 
 The df corrected root mean square of the residuals is  0.24 
 
-The harmonic n.obs is  36 with the empirical chi square  459  with prob <  2.1e-17 
-The total n.obs was  102  with Likelihood Chi Square =  7261  with prob <  0 
+The harmonic n.obs is  36 with the empirical chi square  459.29  with prob <  2.1e-17 
+The total n.obs was  102  with Likelihood Chi Square =  7261.07  with prob <  0 
 
 Tucker Lewis Index of factoring reliability =  0.036
 RMSEA index =  0.547  and the 90 % confidence intervals are  0.539 0.561
-BIC =  6197
+BIC =  6197.32
 Fit based upon off diagonal values = 0.85
 Measures of factor score adequacy             
                                                    MR1
